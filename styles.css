@@ -382,11 +382,14 @@ body {
 }
 
 .hero-portrait-frame {
-  width: 115px;
-  height: 115px;
+  width: 50mm;
+  height: 50mm;
+  max-width: 180px;
+  max-height: 180px;
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
   border: 3px solid var(--color-emerald);
-  box-shadow: 0 0 25px var(--color-emerald-glow);
+  box-shadow: 0 0 24px var(--color-emerald-glow);
   overflow: hidden;
   display: flex;
   align-items: center;
