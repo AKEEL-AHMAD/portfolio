@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akeel Ahmad Peerzada — Curriculum Vitae / Resume</title>
+  <meta name="description" content="Official Curriculum Vitae of Akeel Ahmad Peerzada — Cybersecurity Analyst & Computer Science Engineer." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #060a12;
+      --card-bg: #0b1220;
+      --border: rgba(255, 255, 255, 0.12);
+      --accent: #10b981;
+      --cyan: #06b6d4;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: #cbd5e1;
+      font-family: 'Inter', -apple-system, sans-serif;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+    }
+    .action-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .back-link {
+      color: var(--cyan);
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88rem;
+    }
+    .back-link:hover { text-decoration: underline; }
+    .print-btn {
+      background: var(--accent);
+      color: #041a10;
+      border: none;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 0.55rem 1.2rem;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: opacity 0.2s;
+    }
+    .print-btn:hover { opacity: 0.9; }
+    .header-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+    }
+    .header-contacts {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin: 0.5rem 0 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .header-contacts a { color: var(--cyan); text-decoration: none; }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-bottom: 1.5px solid rgba(16, 185, 129, 0.35);
+      padding-bottom: 0.35rem;
+      margin: 1.75rem 0 0.85rem;
+    }
+    .entry {
+      margin-bottom: 1rem;
+    }
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .entry-sub {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--cyan);
+      margin-bottom: 0.3rem;
+    }
+    .entry-desc {
+      font-size: 0.88rem;
+      color: #cbd5e1;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 0.75rem;
+      font-size: 0.86rem;
+    }
+    .cert-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      font-size: 0.86rem;
+    }
+    .cert-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+    }
+    .cert-issuer {
+      color: var(--cyan);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      display: block;
+    }
+    ul.bullets {
+      padding-left: 1.25rem;
+      font-size: 0.88rem;
+    }
+    ul.bullets li { margin-bottom: 0.35rem; }
+
+    @media (max-width: 600px) {
+      .cert-list { grid-template-columns: 1fr; }
+      .container { padding: 1.5rem; }
+    }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; padding: 0 !important; }
+      .action-bar { display: none !important; }
+      .container { border: none !important; box-shadow: none !important; padding: 0 !important; background: transparent !important; }
+      .header-name, .entry-header, strong { color: #000 !important; }
+      .section-title { color: #000 !important; border-bottom: 1.5px solid #000 !important; }
+      .entry-sub, .cert-issuer, .header-contacts a { color: #333 !important; }
+      .cert-item { border: 1px solid #ccc !important; background: none !important; color: #000 !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="action-bar">
+      <a href="index.html" class="back-link">← Return to Interactive Portfolio</a>
+      <button class="print-btn" onclick="window.print()">
+        <span>🖨️ Print / Save as PDF</span>
+      </button>
+    </div>
+
+    <header>
+      <h1 class="header-name">Akeel Ahmad Peerzada</h1>
+      <div class="header-contacts">
+        <span>📞 +91 6006889027</span>
+        <span>📧 <a href="mailto:peerakeel9027@gmail.com">peerakeel9027@gmail.com</a></span>
+        <span>🔗 <a href="https://www.linkedin.com/in/akeel-ahmad-peerzada-59a942333/" target="_blank">LinkedIn</a></span>
+        <span>💻 <a href="https://github.com/AKEEL-AHMAD" target="_blank">GitHub</a></span>
+        <span>📍 Jammu & Kashmir, India</span>
+      </div>
+    </header>
+
+    <section>
+      <h2 class="section-title">Career Objective</h2>
+      <p class="entry-desc">
+        Builds cybersecurity and IoT systems using Python, Linux, Wireshark, and Nmap to test, automate, and troubleshoot connected devices. Develops ESP32 and Arduino prototypes that connect hardware and software for practical problem solving. Applies ethical hacking and network security fundamentals to create secure, working prototypes.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="section-title">Educational Qualifications</h2>
+      
+      <div class="entry">
+        <div class="entry-header">
+          <strong>B.Tech / B.E. in Computer Science & Engineering</strong>
+          <span>2024 – 2027</span>
+        </div>
+        <div class="entry-sub">Nehru Institute of Engineering and Technology • Anna University | CGPA: 7.56</div>
+        <p class="entry-desc">Advanced studies in Network Security, Operating Systems, Cryptography, DBMS, and Web Technologies.</p>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <strong>Diploma in Computer Engineering</strong>
+          <span>2020 – 2023</span>
+        </div>
+        <div class="entry-sub">Government Polytechnic College Gogji Bagh Srinagar • BOTE | CGPA: 7.0</div>
+        <p class="entry-desc">Core foundations in C/C++, Data Structures, Computer Networks, and Microprocessors.</p>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <strong>10th Matriculation</strong>
+          <span>Dec 2018 – Dec 2019</span>
+        </div>
+        <div class="entry-sub">Jamia Islamia Waripora Gonipora Handwara • JKBOSE | 63%</div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Technical Skills</h2>
+      <ul class="bullets">
+        <li><strong>Cybersecurity & Threat Intel:</strong> Ethical Hacking, Network Reconnaissance & Port Scanning (Nmap), Wireshark Traffic Analysis, Vulnerability Assessment, Security Monitoring, Basic Incident Response, OWASP Top 10, Applied Cryptography (AES-256 GCM, PBKDF2), JWT & RBAC.</li>
+        <li><strong>Languages & Full-Stack:</strong> Python (Primary), Node.js, Express.js, React, SQL / SQLite, HTML5 / Modern CSS, C / C++.</li>
+        <li><strong>Hardware & IoT:</strong> ESP32 Microcontrollers, Arduino UNO, Sensor Array Interfacing (I2C/SPI/UART), Non-Destructive Hardware Testing, Microcontroller Firmware.</li>
+        <li><strong>AI & DevOps:</strong> Generative AI Integration, Predictive Modeling, Automated CI/CD Testing (13+ Tests), Vercel & Render Cloud Deployment, Git & GitHub.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="section-title">Certifications</h2>
+      <div class="cert-list">
+        <div class="cert-item">
+          <strong>Cyber Simulation</strong>
+          <span class="cert-issuer">Deloitte</span>
+        </div>
+        <div class="cert-item">
+          <strong>Cybersecurity Analyst</strong>
+          <span class="cert-issuer">TATA</span>
+        </div>
+        <div class="cert-item">
+          <strong>Cybersecurity for Everyone</strong>
+          <span class="cert-issuer">University of Maryland</span>
+        </div>
+        <div class="cert-item">
+          <strong>AI for Entrepreneurship & AI for All</strong>
+          <span class="cert-issuer">Intel</span>
+        </div>
+        <div class="cert-item">
+          <strong>Introduction to Cybersecurity Essentials</strong>
+          <span class="cert-issuer">Industry Certification</span>
+        </div>
+        <div class="cert-item">
+          <strong>Ethical Hacking Principles</strong>
+          <span class="cert-issuer">Industry Certification</span>
+        </div>
+        <div class="cert-item">
+          <strong>Python Data Structures</strong>
+          <span class="cert-issuer">Professional Course</span>
+        </div>
+        <div class="cert-item">
+          <strong>Ethical Hacking, SOC Analyst & AI Impact</strong>
+          <span class="cert-issuer">Specialized Seminar (3-Day Intensive)</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Key Projects</h2>
+
+      <div class="entry">
+        <div class="entry-header">
+          <strong>AI-CTI: Full-Stack Cyber Threat Intelligence & SecOps Platform</strong>
+          <span>2024 – 2025</span>
+        </div>
+        <div class="entry-sub">React, Node.js, Express, SQLite, VirusTotal & AbuseIPDB APIs, JWT + RBAC</div>
+        <p class="entry-desc">Full 14-page Security Operations dashboard with IOC search, MITRE ATT&CK matrix, incident triage, and automated SOAR playbooks. Hardened with rate limiting, account lockout, and 13 automated CI tests.</p>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <strong>Non-Destructive Alternative to Fire Assay for Gold Testing</strong>
+          <span>2025 (IIT Kharagpur)</span>
+        </div>
+        <div class="entry-sub">🏆 Smart India Hackathon 2025 National Finalist Project | ESP32, Arduino UNO, Sensor Array</div>
+        <p class="entry-desc">Engineered multi-sensor embedded hardware combining hydrostatic density calculation with eddy current electromagnetic response to evaluate gold purity without the destructive melting of traditional fire assay.</p>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <strong>Smart Community Health Monitoring & Early Warning System</strong>
+          <span>2024 – 2025 (Coimbatore)</span>
+        </div>
+        <div class="entry-sub">Mini Project | AI Models, Database Architecture, IoT Telemetry, Web Dashboard</div>
+        <p class="entry-desc">Predictive health surveillance system correlating water sensor telemetry with symptom analytics to forecast water-borne disease outbreaks and issue automated early quarantine alerts.</p>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <strong>Zero-Knowledge Cryptographic Password Vault</strong>
+          <span>2024</span>
+        </div>
+        <div class="entry-sub">Python, AES-256 GCM, PBKDF2-HMAC-SHA512 (600k rounds), Anti-Memory Scraping</div>
+        <p class="entry-desc">Credential security vault implementing authenticated encryption, secure key derivation, and memory buffer sanitization to prevent memory dumping and offline brute force attacks.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Internships & Professional Experience</h2>
+      <div class="entry">
+        <div class="entry-header">
+          <strong>Cyber Security & Ethical Hacking Intern</strong>
+          <span>CODTECH IT Solutions Pvt. Ltd.</span>
+        </div>
+        <div class="entry-sub">Online Internship • 1 Month</div>
+        <p class="entry-desc">Executed reconnaissance workflows, port scanning with Nmap, identification of security vulnerabilities, verification of basic exploit vectors, and production of structured technical mitigation reports.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">National Achievements & Extracurriculars</h2>
+      <ul class="bullets">
+        <li><strong>Smart India Hackathon 2025 (SIH 2025) National Finalist:</strong> Presented hardware IoT innovation at IIT Kharagpur before national evaluation panels.</li>
+        <li><strong>State-Level Cricket Representative:</strong> Competitive athletics background instilling tactical composure, discipline, and high-pressure execution.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="section-title">Personal Details</h2>
+      <div class="entry-desc" style="font-family:'JetBrains Mono', monospace; font-size:0.84rem;">
+        <p>• <strong>Date of Birth:</strong> 01-01-2005</p>
+        <p>• <strong>Father's Name:</strong> Hilal Ahmad Peerzada</p>
+        <p>• <strong>Permanent Address:</strong> Muqam Wahama Mawer Langate, Jammu & Kashmir 193302, India</p>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

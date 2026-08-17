@@ -197,12 +197,42 @@ function initTerminal() {
       </div>
     `,
 
+    certs: () => `
+      <div class="output-text">
+        📜 <strong>Verified Industry Certifications:</strong><br/>
+        • <strong>Cyber Simulation:</strong> Deloitte<br/>
+        • <strong>Cybersecurity Analyst:</strong> TATA<br/>
+        • <strong>Cybersecurity for Everyone:</strong> University of Maryland<br/>
+        • <strong>AI for Entrepreneurship & AI for All:</strong> Intel<br/>
+        • <strong>Introduction to Cybersecurity Essentials</strong><br/>
+        • <strong>Ethical Hacking Principles</strong><br/>
+        • <strong>Python Data Structures</strong><br/>
+        <a href="#certifications" style="color:#06b6d4;text-decoration:underline;">[View Certifications Section]</a>
+      </div>
+    `,
+
+    certifications: () => `
+      <div class="output-text">
+        📜 <strong>Verified Industry Certifications:</strong><br/>
+        • <strong>Cyber Simulation:</strong> Deloitte<br/>
+        • <strong>Cybersecurity Analyst:</strong> TATA<br/>
+        • <strong>Cybersecurity for Everyone:</strong> University of Maryland<br/>
+        • <strong>AI for Entrepreneurship & AI for All:</strong> Intel<br/>
+        • <strong>Introduction to Cybersecurity Essentials</strong><br/>
+        • <strong>Ethical Hacking Principles</strong><br/>
+        • <strong>Python Data Structures</strong><br/>
+        <a href="#certifications" style="color:#06b6d4;text-decoration:underline;">[View Certifications Section]</a>
+      </div>
+    `,
+
     contact: () => `
       <div class="output-text">
         📬 <strong>Direct Channels:</strong><br/>
+        • <strong>Phone:</strong> <a href="tel:+916006889027" style="color:#34d399;">+91 6006889027</a><br/>
         • <strong>Email:</strong> <a href="mailto:peerakeel9027@gmail.com" style="color:#10b981;">peerakeel9027@gmail.com</a><br/>
         • <strong>GitHub:</strong> <a href="https://github.com/AKEEL-AHMAD?tab=repositories" target="_blank" style="color:#06b6d4;">https://github.com/AKEEL-AHMAD</a><br/>
         • <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/akeel-ahmad-peerzada-59a942333/" target="_blank" style="color:#38bdf8;">akeel-ahmad-peerzada</a><br/>
+        • <strong>Location:</strong> Jammu & Kashmir, India<br/>
         • <a href="#contact" style="color:#10b981;text-decoration:underline;">[Go to Contact Form]</a>
       </div>
     `,
