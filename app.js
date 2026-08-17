@@ -1,12 +1,14 @@
 /**
  * Akeel Ahmad Peerzada - Portfolio Application Logic
- * Interactive Terminal (AkeelOS), Modal Architecture Viewer, Skills Filter, and Utilities
+ * Interactive Terminal (AkeelOS), Modal Architecture Viewer, SecOps Playground, Skills Filter, Resume Handler, and Utilities
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   initTypewriter();
   initTerminal();
   initProjectModals();
+  initResumeModal();
+  initSecOpsPlayground();
   initSkillsFilter();
   initContactForm();
   initNavigation();
@@ -21,12 +23,12 @@ function initTypewriter() {
   if (!el) return;
 
   const roles = [
-    'Cybersecurity & Threat Intelligence',
+    'Cyber Threat Intelligence & SecOps',
     'AI-CTI Platform Creator',
     'Ethical Hacking & Pen Testing',
     'Smart India Hackathon 2025 Finalist',
     'Hardware IoT Security (ESP32/Arduino)',
-    'Applied Cryptography & Secure Coding'
+    'Applied Cryptography & Vault Security'
   ];
 
   let roleIndex = 0;
@@ -70,7 +72,6 @@ function initTerminal() {
   const termInput = document.getElementById('termInput');
   const terminalOutput = document.getElementById('terminalOutput');
   const termClearBtn = document.getElementById('termClearBtn');
-  const quickTerminalBtn = document.getElementById('quickTerminalBtn');
   const interactiveTerminal = document.getElementById('interactiveTerminal');
   const chipButtons = document.querySelectorAll('.term-chip');
 
@@ -84,11 +85,11 @@ function initTerminal() {
     help: () => `
       <div class="output-text">
         <strong>AkeelOS Shell Commands:</strong><br/>
-        • <span class="term-cmd-highlight">whoami</span>       : Profile overview & current status<br/>
+        • <span class="term-cmd-highlight">whoami</span>       : Profile overview & focus areas<br/>
         • <span class="term-cmd-highlight">ai-cti</span>        : Inspect Flagship Cyber Threat Intelligence Platform<br/>
         • <span class="term-cmd-highlight">gold-assay</span>    : Non-destructive IoT gold assay (SIH 2025 Finalist)<br/>
+        • <span class="term-cmd-highlight">resume</span>        : View & print formal Curriculum Vitae<br/>
         • <span class="term-cmd-highlight">sih</span>           : Smart India Hackathon 2025 National Finalist journey<br/>
-        • <span class="term-cmd-highlight">health-ai</span>     : Mini project on AI community health monitoring<br/>
         • <span class="term-cmd-highlight">projects</span>      : List all primary engineering projects<br/>
         • <span class="term-cmd-highlight">skills</span>        : Breakdown of technical proficiencies<br/>
         • <span class="term-cmd-highlight">internship</span>    : CODTECH IT Solutions experience summary<br/>
@@ -101,20 +102,18 @@ function initTerminal() {
     whoami: () => `
       <div class="output-text">
         <strong>Akeel Ahmad Peerzada</strong><br/>
-        🎓 <strong>B.E. Computer Science and Engineering</strong> (Final Year, CGPA 7.56)<br/>
-        🏛️ <strong>Institution:</strong> Nehru Institute of Eng & Tech (Anna University)<br/>
-        🛡️ <strong>Focus:</strong> Cybersecurity, Threat Intelligence, IoT Security, Cryptography<br/>
-        🏆 <strong>Achievements:</strong> Smart India Hackathon 2025 Finalist, State-Level Cricketer<br/>
-        💡 <em>"A curious, ambitious, hands-on learner dedicated to solving real-world security challenges."</em>
+        🎓 <strong>B.E. in Computer Science and Engineering</strong> (Anna University / NIET, CGPA 7.56)<br/>
+        🛡️ <strong>Specialization:</strong> Threat Hunting, CTI Platforms, Embedded Hardware Testing, Cryptography<br/>
+        🏆 <strong>Milestones:</strong> Smart India Hackathon 2025 Finalist, State-Level Cricketer<br/>
+        💡 <em>"A curious, ambitious, hands-on learner focused on building verifiable security solutions."</em>
       </div>
     `,
 
     'ai-cti': () => `
       <div class="output-text">
-        🔥 <strong>AI-CTI (Cyber Threat Intelligence Platform)</strong><br/>
+        🔥 <strong>AI-CTI (Cyber Threat Intelligence & SecOps Platform)</strong><br/>
         • <strong>Type:</strong> Full-Stack 14-Page Security Operations Suite<br/>
         • <strong>Stack:</strong> React + Tailwind (Frontend) | Node.js + Express + SQLite (Backend)<br/>
-        • <strong>Features:</strong> IOC Search, Threat Hunting, MITRE ATT&CK Mapping, Incident Management, SOAR Playbooks<br/>
         • <strong>Security:</strong> Real JWT with Role-Based Access Control (RBAC), Rate Limiting, Account Lockout<br/>
         • <strong>Integrations:</strong> VirusTotal, AbuseIPDB, and AlienVault OTX Threat Intel APIs<br/>
         • <strong>DevOps:</strong> 13-Test Automated Suite on push, Self-Signed HTTPS, Auto DB Backups<br/>
@@ -126,29 +125,29 @@ function initTerminal() {
     'gold-assay': () => `
       <div class="output-text">
         🏆 <strong>Non-Destructive Alternative to Fire Assay for Gold Testing (SIH 2025 Finalist)</strong><br/>
-        • <strong>Problem:</strong> Traditional fire assay destroys or alters precious jewellery and artefacts.<br/>
+        • <strong>Problem:</strong> Traditional fire assay destroys or alters precious sample jewellery.<br/>
         • <strong>Hardware:</strong> ESP32 & Arduino UNO microcontroller sensor array.<br/>
-        • <strong>Method:</strong> Hydrostatic density measurement + electromagnetic/eddy current profiling.<br/>
+        • <strong>Method:</strong> Hydrostatic density calculation + eddy current electromagnetic profiling.<br/>
         • <strong>Result:</strong> 100% non-destructive purity evaluation with digital telemetry logging.<br/>
         <a href="#projects" style="color:#06b6d4;text-decoration:underline;">[View in Projects Grid]</a>
       </div>
     `,
 
+    resume: () => {
+      openResumeModal();
+      return `
+        <div class="output-text" style="color:#10b981;">
+          📄 Opened Curriculum Vitae modal. You can review or click 'Print / Save as PDF'.
+        </div>
+      `;
+    },
+
     sih: () => `
       <div class="output-text">
         🏆 <strong>Smart India Hackathon 2025 — National Finalist</strong><br/>
         • <strong>Project:</strong> Non-Destructive Alternative Method to Traditional Fire Assay for Gold Testing.<br/>
-        • <strong>Technologies:</strong> ESP32, Arduino UNO, High-precision hydrostatic sensors, EM testing.<br/>
-        • <strong>Experience:</strong> Represented institute at national level, defended technical architecture before jury panels.
-      </div>
-    `,
-
-    'health-ai': () => `
-      <div class="output-text">
-        💡 <strong>AI Smart Community Health & Early Warning System (Mini Project)</strong><br/>
-        • <strong>Scope:</strong> Predictive surveillance for water-borne disease outbreaks.<br/>
-        • <strong>Stack:</strong> Python ML models, Relational SQL database, Full-stack dashboard.<br/>
-        • <strong>Outcome:</strong> Real-time symptom analytics and early community alert dispatching.
+        • <strong>Hardware:</strong> ESP32, Arduino UNO, Hydrostatic load cells, and electromagnetic sensor coils.<br/>
+        • <strong>Defense:</strong> Live technical defense and prototype testing before national jury panels.
       </div>
     `,
 
@@ -158,7 +157,7 @@ function initTerminal() {
         1. <strong>AI-CTI</strong> — Flagship 14-Page SecOps & Cyber Threat Intelligence Suite (<a href="https://github.com/AKEEL-AHMAD/ai-cti" target="_blank" style="color:#06b6d4;">GitHub</a>)<br/>
         2. <strong>Gold Fire Assay Alternative</strong> — SIH 2025 Finalist Project (ESP32 / Arduino / Hardware Security)<br/>
         3. <strong>Smart Community Health Monitoring</strong> — Mini Project (AI / Data Pipelines / Web Dashboard)<br/>
-        4. <strong>Cryptographic Password Manager</strong> — Zero-Knowledge AES-256 GCM Vault<br/>
+        4. <strong>Cryptographic Password Vault</strong> — Zero-Knowledge AES-256 GCM Vault<br/>
         <em>Type project command (e.g. 'ai-cti' or 'gold-assay') for quick deep-dive.</em>
       </div>
     `,
@@ -175,8 +174,8 @@ function initTerminal() {
     internship: () => `
       <div class="output-text">
         💼 <strong>CODTECH IT Solutions</strong> — Cyber Security & Ethical Hacking Intern<br/>
-        • Reconnaissance, Network port scanning & vulnerability discovery.<br/>
-        • Basic exploitation assessments & mitigation reporting.<br/>
+        • Reconnaissance, Network port scanning with Nmap & vulnerability discovery.<br/>
+        • Verification of basic exploit vectors & mitigation reporting.<br/>
         • Collaborative security analysis & documentation.
       </div>
     `,
@@ -185,16 +184,16 @@ function initTerminal() {
       <div class="output-text">
         🏏 <strong>State-Level Cricket:</strong><br/>
         Represented state team in competitive cricket leagues.<br/>
-        Instilled discipline, high-pressure execution, strategic thinking, and resilience.
+        Instilled discipline, high-pressure execution, strategic thinking, and team leadership.
       </div>
     `,
 
     contact: () => `
       <div class="output-text">
-        📬 <strong>Get in Touch:</strong><br/>
+        📬 <strong>Direct Channels:</strong><br/>
         • <strong>Email:</strong> <a href="mailto:peerakeel9027@gmail.com" style="color:#10b981;">peerakeel9027@gmail.com</a><br/>
         • <strong>GitHub:</strong> <a href="https://github.com/AKEEL-AHMAD?tab=repositories" target="_blank" style="color:#06b6d4;">https://github.com/AKEEL-AHMAD</a><br/>
-        • <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/akeel-ahmad-peerzada-59a942333/" target="_blank" style="color:#38bdf8;">https://www.linkedin.com/in/akeel-ahmad-peerzada-59a942333/</a><br/>
+        • <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/akeel-ahmad-peerzada-59a942333/" target="_blank" style="color:#38bdf8;">akeel-ahmad-peerzada</a><br/>
         • <a href="#contact" style="color:#10b981;text-decoration:underline;">[Go to Contact Form]</a>
       </div>
     `,
@@ -305,19 +304,10 @@ function initTerminal() {
       }
     }
   });
-
-  // Quick Terminal Button in Hero
-  if (quickTerminalBtn && interactiveTerminal) {
-    quickTerminalBtn.addEventListener('click', () => {
-      interactiveTerminal.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      termInput.focus();
-      showToast('AkeelOS Terminal active. Try running "ai-cti" or "skills"');
-    });
-  }
 }
 
 /* ==========================================================================
-   3. PROJECT DEEP-DIVE MODAL ENGINE
+   3. PROJECT DEEP-DIVE MODAL ENGINE (Rich Technical Architecture)
    ========================================================================== */
 function initProjectModals() {
   const modalBackdrop = document.getElementById('projectModal');
@@ -335,41 +325,41 @@ function initProjectModals() {
       kicker: 'FLAGSHIP CYBER THREAT INTELLIGENCE PLATFORM',
       title: 'AI-CTI: Full-Stack 14-Page SecOps & Threat Intel Suite',
       content: `
-        <h4>1. System Overview & Architecture</h4>
+        <h4>1. System Architecture & Live Ingestion Pipelines</h4>
         <p>
-          <strong>AI-CTI</strong> is an enterprise-grade Cyber Threat Intelligence and Security Operations dashboard built and deployed end-to-end. Spanning <strong>14 functional pages</strong>, it bridges tactical SOC monitoring with automated threat hunting, MITRE ATT&CK correlation, and incident remediation workflows.
+          <strong>AI-CTI</strong> is an end-to-end Cyber Threat Intelligence and Security Operations dashboard. Across <strong>14 dedicated pages</strong>, it bridges tactical SOC monitoring with automated threat hunting, MITRE ATT&CK correlation, and incident containment playbooks.
         </p>
         
         <div class="modal-code-box">
-[React/Tailwind Frontend (Vercel)] 
-    │ (Self-Signed HTTPS / JWT Auth Headers / Rate-Limited)
+[React / Tailwind Frontend (Hosted on Vercel)] 
+    │ (Self-Signed HTTPS / JWT Auth Bearer / Rate-Limited 50 req/min)
     ▼
-[Node.js + Express REST API (Render)] ──► [SQLite DB + Auto-Backup Service]
+[Node.js + Express REST API (Hosted on Render)] ──► [SQLite DB + Auto-Backup Service]
     │
-    ├──► [VirusTotal API Integration] (Malware & Hash Analysis)
-    ├──► [AbuseIPDB Feed] (IP Reputation & C2 Telemetry)
-    └──► [AlienVault OTX Pulses] (Adversary TTP Tracking)
+    ├──► [VirusTotal API v3 Engine] ────► File Hashes & Multi-Engine Detections
+    ├──► [AbuseIPDB Threat Feed] ───────► IP Reputation & C2 Blacklist Scores
+    └──► [AlienVault OTX Pulse Graph] ──► Threat Actor Campaigns & MITRE TTPs
         </div>
 
         <p>
           <strong>GitHub Repository:</strong> <a href="https://github.com/AKEEL-AHMAD/ai-cti" target="_blank" rel="noopener noreferrer" style="color:#06b6d4;text-decoration:underline;">https://github.com/AKEEL-AHMAD/ai-cti</a>
         </p>
 
-        <h4>2. Key Modules (14-Page Security Hub)</h4>
+        <h4>2. Core Functional Modules (14-Page Suite)</h4>
         <ul>
-          <li><strong>IOC Search & Ingestion:</strong> Query and correlate IP addresses, domains, file hashes (MD5/SHA256), and CVE identifiers.</li>
-          <li><strong>Threat Hunting & MITRE ATT&CK:</strong> Visual tactical matrix mapping live adversary behaviors to ATT&CK techniques (T1059, T1078, etc.).</li>
-          <li><strong>Incident Management:</strong> Ticket creation, severity scoring (CVSS/EPSS), escalation paths, and forensic note-taking.</li>
-          <li><strong>SOAR Playbooks:</strong> Automated containment actions (IP blacklisting, account lockdown triggers).</li>
-          <li><strong>Malware Telemetry & Analysis:</strong> Static inspection of suspicious binaries with multi-engine scanning.</li>
+          <li><strong>IOC Ingestion & Correlation:</strong> Unified query engine for IP addresses, hostnames, MD5/SHA256 file hashes, and CVE identifiers with aggregated risk scoring.</li>
+          <li><strong>Threat Hunting & MITRE ATT&CK Matrix:</strong> Interactive visual matrix mapping adversary tactics (Initial Access, Execution, Persistence, Privilege Escalation) to specific technique IDs (T1059, T1078, etc.).</li>
+          <li><strong>Incident Management & Forensic Triage:</strong> Ticket creation, CVSS/EPSS scoring, analyst assignment, forensic logs, and containment notes.</li>
+          <li><strong>SOAR Playbooks:</strong> Automated containment triggers including IP blacklisting, host quarantine, and credential revocation.</li>
+          <li><strong>Malware Telemetry & Analysis:</strong> Static binary inspection with multi-engine signature correlation.</li>
         </ul>
 
         <h4>3. Security Engineering & Hardening</h4>
         <ul>
-          <li><strong>Authentication & RBAC:</strong> Cryptographic JWTs with granular Role-Based Access Control (Admin, Analyst, Read-Only).</li>
-          <li><strong>Brute-Force & DoS Protection:</strong> Express rate-limiting (50 req/min) combined with progressive account lockout policies.</li>
+          <li><strong>Authentication & RBAC:</strong> Cryptographic JWTs signed with secret keys, implementing granular Role-Based Access Control (Admin, Analyst, Read-Only).</li>
+          <li><strong>Brute-Force & DoS Mitigation:</strong> Express rate-limiting (50 requests/min) combined with progressive account lockout policies on failed attempts.</li>
           <li><strong>DevOps & Integrity:</strong> 13 automated tests run via CI pipeline on every push; automated periodic SQLite database backup daemon.</li>
-          <li><strong>Transparent Engineering:</strong> Comprehensive documentation clearly designating real vs simulated data streams for complete honesty and audit readiness.</li>
+          <li><strong>Honest Documentation:</strong> Transparent architecture documentation clearly designating real live API calls vs simulated benchmark feeds for complete audit integrity.</li>
         </ul>
       `
     },
@@ -378,25 +368,25 @@ function initProjectModals() {
       kicker: '🏆 SMART INDIA HACKATHON 2025 FINALIST PROJECT',
       title: 'Non-Destructive Alternative to Fire Assay for Gold Testing',
       content: `
-        <h4>1. The Engineering Challenge & SIH 2025 Finalist Recognition</h4>
+        <h4>1. Engineering Challenge & SIH 2025 Finalist Recognition</h4>
         <p>
-          As a <strong>National Finalist in Smart India Hackathon 2025</strong>, developed a non-destructive hardware alternative to traditional fire assay (cupellation). Traditional testing destroys or alters precious jewellery and artefacts, causing irreversible loss.
+          Classical fire assay (cupellation) is the standard for gold testing, but it requires scraping or melting the sample, causing permanent physical destruction. At <strong>Smart India Hackathon 2025</strong>, developed a hardware testing apparatus providing 100% non-destructive purity evaluation.
         </p>
 
-        <h4>2. Hardware Architecture & Methodology</h4>
+        <h4>2. Hardware Architecture & Sensor Fusion</h4>
         <p>
-          Engineered a multi-sensor embedded testing apparatus utilizing <strong>ESP32</strong> and <strong>Arduino UNO</strong>.
+          Engineered a multi-sensor embedded testing apparatus using <strong>ESP32</strong> and <strong>Arduino UNO</strong>.
         </p>
         <div class="modal-code-box">
-[Precious Sample] ──► [High-Precision Hydrostatic Load Sensor] ──► Density Matrix
+[Precious Sample] ──► [High-Precision Hydrostatic Load Sensor] ──► Specific Gravity (Density)
                   ──► [Eddy Current / EM Coil Array]          ──► Conductivity Signature
-                  ──► [Microcontroller Interfacing (ESP32/Arduino)]
-                  ──► [Digital LCD Telemetry & Serial Logging]
+                  ──► [Microcontroller Sensor Interfacing (ESP32/Arduino)]
+                  ──► [Digital LCD Telemetry & Serial Logging Output]
         </div>
 
-        <h4>3. Technical Outcomes</h4>
+        <h4>3. Technical Outcomes & Counterfeit Detection</h4>
         <ul>
-          <li><strong>Zero Material Loss:</strong> Samples remain 100% intact with zero chemical, thermal, or structural damage.</li>
+          <li><strong>Zero Material Alteration:</strong> Samples remain 100% intact with zero chemical, thermal, or structural change.</li>
           <li><strong>High-Speed Digital Readout:</strong> Purity calculations and karatage estimation computed within seconds.</li>
           <li><strong>Sensor Fusion:</strong> Combined hydrostatic Archimedes density calculation with electromagnetic conductivity profiling to identify counterfeit cores (such as tungsten or lead).</li>
         </ul>
@@ -407,7 +397,7 @@ function initProjectModals() {
       kicker: '💡 MINI PROJECT | AI & FULL-STACK SYSTEM',
       title: 'AI-Based Smart Community Health Monitoring & Early Warning System',
       content: `
-        <h4>1. Project Scope</h4>
+        <h4>1. Project Scope & Architecture</h4>
         <p>
           Developed an end-to-end predictive surveillance system designed to detect and curb water-borne disease outbreaks before they escalate into community epidemics.
         </p>
@@ -494,7 +484,119 @@ Secret Payload  ──► AES-256 GCM Authenticated Encryption (12-byte IV)   �
 }
 
 /* ==========================================================================
-   4. SKILLS FILTER TABS
+   4. RESUME VIEWER & PRINT MODAL
+   ========================================================================== */
+function initResumeModal() {
+  const resumeModal = document.getElementById('resumeModal');
+  const navResumeBtn = document.getElementById('navResumeBtn');
+  const heroResumeBtn = document.getElementById('heroResumeBtn');
+  const resumeCloseBtn = document.getElementById('resumeCloseBtn');
+  const printResumeBtn = document.getElementById('printResumeBtn');
+
+  if (!resumeModal) return;
+
+  window.openResumeModal = function() {
+    resumeModal.classList.add('active');
+    resumeModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+
+  function closeResumeModal() {
+    resumeModal.classList.remove('active');
+    resumeModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  if (navResumeBtn) navResumeBtn.addEventListener('click', openResumeModal);
+  if (heroResumeBtn) heroResumeBtn.addEventListener('click', openResumeModal);
+  if (resumeCloseBtn) resumeCloseBtn.addEventListener('click', closeResumeModal);
+
+  if (printResumeBtn) {
+    printResumeBtn.addEventListener('click', () => {
+      window.print();
+    });
+  }
+
+  resumeModal.addEventListener('click', (e) => {
+    if (e.target === resumeModal) closeResumeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && resumeModal.classList.contains('active')) {
+      closeResumeModal();
+    }
+  });
+}
+
+/* ==========================================================================
+   5. INTERACTIVE SECOPS PLAYGROUND (Proof Over Description)
+   ========================================================================== */
+function initSecOpsPlayground() {
+  const queryChips = document.querySelectorAll('.soc-query-chip');
+  const feedItems = document.querySelectorAll('#socFeedList .feed-item');
+  const feedback = document.getElementById('socQueryFeedback');
+
+  if (!feedback) return;
+
+  const mockIntelDb = {
+    '185.220.101.5': {
+      status: 'CRITICAL',
+      score: '100% Malicious',
+      source: 'AbuseIPDB / Tor Exit Node',
+      desc: 'Active Cobalt Strike C2 Infrastructure reported by 142 distinct security analysts.'
+    },
+    'CVE-2024-3094': {
+      status: 'CRITICAL',
+      score: 'CVSS 10.0',
+      source: 'NVD / AlienVault Pulse',
+      desc: 'Malicious backdoor in upstream XZ Utils liblzma targeting OpenSSH authentication.'
+    },
+    '8.8.8.8': {
+      status: 'CLEAN',
+      score: '0/72 Detections',
+      source: 'VirusTotal / Quad8',
+      desc: 'Verified benign Google Anycast Public DNS Resolver.'
+    },
+    'SHA256': {
+      status: 'WARNING',
+      score: '48/72 Detections',
+      source: 'VirusTotal Static Engine',
+      desc: 'Trojan.AgentTesla spyware binary with persistence mechanism in AppData.'
+    }
+  };
+
+  function handleQuery(key) {
+    const data = mockIntelDb[key] || mockIntelDb['185.220.101.5'];
+    feedback.innerHTML = `<span>Querying...</span>`;
+
+    setTimeout(() => {
+      if (data.status === 'CRITICAL') {
+        feedback.innerHTML = `<span style="color:#f87171;">⚠️ [${data.score}] ${data.source}: ${data.desc}</span>`;
+      } else if (data.status === 'CLEAN') {
+        feedback.innerHTML = `<span style="color:#34d399;">✓ [${data.score}] ${data.source}: ${data.desc}</span>`;
+      } else {
+        feedback.innerHTML = `<span style="color:#fbbf24;">⚡ [${data.score}] ${data.source}: ${data.desc}</span>`;
+      }
+    }, 250);
+  }
+
+  queryChips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const q = chip.getAttribute('data-query');
+      handleQuery(q);
+    });
+  });
+
+  feedItems.forEach((item) => {
+    item.addEventListener('click', () => {
+      const ioc = item.getAttribute('data-ioc');
+      handleQuery(ioc);
+    });
+  });
+}
+
+/* ==========================================================================
+   6. SKILLS FILTER TABS
    ========================================================================== */
 function initSkillsFilter() {
   const filterTabs = document.querySelectorAll('.filter-tab');
@@ -524,7 +626,7 @@ function initSkillsFilter() {
 }
 
 /* ==========================================================================
-   5. CONTACT FORM SIMULATION & DISPATCH
+   7. CONTACT FORM (Formspree AJAX + Mailto Fallback)
    ========================================================================== */
 function initContactForm() {
   const contactForm = document.getElementById('contactForm');
@@ -533,7 +635,7 @@ function initContactForm() {
 
   if (!contactForm || !formStatus) return;
 
-  contactForm.addEventListener('submit', (e) => {
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const name = document.getElementById('senderName').value.trim();
     const email = document.getElementById('senderEmail').value.trim();
@@ -546,26 +648,50 @@ function initContactForm() {
       return;
     }
 
-    // Simulate Secure Handshake & Transmission
     sendMessageBtn.disabled = true;
     sendMessageBtn.innerHTML = `<span>Encrypting & Dispatching...</span> <span class="spinner">⏳</span>`;
     formStatus.className = 'form-status';
     formStatus.textContent = '🔒 Establishing secure transmission channel...';
 
-    setTimeout(() => {
+    try {
+      const formData = new FormData(contactForm);
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        formStatus.className = 'form-status success';
+        formStatus.innerHTML = `✓ <strong>Message dispatched successfully!</strong> Thank you, ${escapeHtml(name)}. I will respond to <strong>${escapeHtml(email)}</strong> shortly.`;
+        contactForm.reset();
+        showToast('Message dispatched to Akeel Ahmad Peerzada!');
+      } else {
+        // Graceful Mailto fallback
+        triggerMailtoFallback(name, email, subject, message);
+      }
+    } catch (err) {
+      // Graceful Mailto fallback on network offline
+      triggerMailtoFallback(name, email, subject, message);
+    } finally {
       sendMessageBtn.disabled = false;
       sendMessageBtn.innerHTML = `<span>Dispatch Message Securely</span> <span class="icon">🚀</span>`;
-      formStatus.className = 'form-status success';
-      formStatus.innerHTML = `✓ <strong>Message dispatched securely!</strong> Thank you, ${escapeHtml(name)}. I will respond to <strong>${escapeHtml(email)}</strong> shortly.`;
-      
-      contactForm.reset();
-      showToast('Message encrypted and dispatched to Akeel!');
-    }, 1200);
+    }
   });
+
+  function triggerMailtoFallback(name, email, subject, message) {
+    formStatus.className = 'form-status success';
+    formStatus.innerHTML = `✓ Direct channel prepared. Opening mail client for <strong>peerakeel9027@gmail.com</strong>...`;
+    const mailtoUri = `mailto:peerakeel9027@gmail.com?subject=${encodeURIComponent(subject + ' - ' + name)}&body=${encodeURIComponent(message + '\n\nFrom: ' + name + ' (' + email + ')')}`;
+    window.location.href = mailtoUri;
+    showToast('Redirecting to mail client...');
+  }
 }
 
 /* ==========================================================================
-   6. NAVIGATION & SMOOTH SCROLLING
+   8. NAVIGATION & SMOOTH SCROLLING
    ========================================================================== */
 function initNavigation() {
   const mobileToggle = document.getElementById('mobileToggle');
@@ -607,7 +733,7 @@ function initNavigation() {
 }
 
 /* ==========================================================================
-   7. COPY TO CLIPBOARD & TOAST UTILITIES
+   9. COPY TO CLIPBOARD & TOAST UTILITIES
    ========================================================================== */
 function initCopyUtilities() {
   const copyEmailBtn = document.getElementById('copyEmailBtn');

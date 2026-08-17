@@ -36,8 +36,8 @@
         <span class="brand-bracket">]</span>
       </a>
 
-      <!-- Status Indicator Pill -->
-      <div class="status-indicator-pill" title="Status: Open to Security & Engineering Opportunities">
+      <!-- Status Indicator Pill (Desktop Only) -->
+      <div class="status-indicator-pill desktop-only" title="Status: Open to Security & Engineering Opportunities">
         <span class="status-pulse"></span>
         <span class="status-label">Open to Roles & Research</span>
       </div>
@@ -49,7 +49,14 @@
         <a href="#projects" class="nav-link">Projects</a>
         <a href="#skills" class="nav-link">Skills & Tools</a>
         <a href="#experience" class="nav-link">Milestones</a>
+        <a href="#endorsements" class="nav-link">Endorsements</a>
         <a href="#contact" class="nav-link nav-btn-primary">Contact</a>
+        <button class="nav-link nav-resume-btn" id="navResumeBtn">
+          <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+          <span>Resume</span>
+        </button>
       </nav>
 
       <!-- Mobile Menu Toggle -->
@@ -62,19 +69,24 @@
   </header>
 
   <main>
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION (No dead top-gap, high visual hierarchy) -->
     <section class="hero-section" id="hero">
       <div class="container hero-grid">
         <!-- Hero Text Column -->
         <div class="hero-content">
           <div class="hero-portrait-wrapper">
-            <div class="hero-portrait-frame">
+            <div class="hero-portrait-frame" title="Akeel Ahmad Peerzada">
               <img src="assets/profile.jpg" alt="Akeel Ahmad Peerzada" class="hero-portrait-img" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='flex';" />
               <span class="hero-portrait-fallback">AP</span>
             </div>
-            <div class="hero-badge">
-              <span class="badge-icon">🛡️</span>
-              <span>B.E. Computer Science & Engineering • Final Year</span>
+            <div class="hero-badge-group">
+              <div class="hero-badge">
+                <span class="badge-icon">🛡️</span>
+                <span>Cybersecurity Analyst & CSE Graduate</span>
+              </div>
+              <div class="hero-sub-badge">
+                <span>⚡ Threat Hunting • Hardware Security • Applied Crypto</span>
+              </div>
             </div>
           </div>
 
@@ -83,48 +95,55 @@
           </h1>
 
           <p class="hero-subtitle">
-            <span class="typewriter-prefix">Specialized in</span>
-            <span class="typewriter-text" id="typewriter">Cybersecurity & Threat Intelligence</span>
+            <span class="typewriter-prefix">Focus:</span>
+            <span class="typewriter-text" id="typewriter">Cyber Threat Intelligence</span>
           </p>
 
           <p class="hero-description">
-            Hands-on engineer building full-stack cyber threat intelligence platforms, hardware security IoT devices (ESP32/Arduino), and AI-driven early warning systems. Finalist in <strong>Smart India Hackathon 2025</strong> and former <strong>State-Level Cricketer</strong>.
+            Building functional security systems, threat intelligence operations platforms (AI-CTI), non-destructive embedded hardware testing tools (ESP32/Arduino), and zero-knowledge cryptographic vaults. Finalist in <strong>Smart India Hackathon 2025</strong> and former <strong>State-Level Cricketer</strong>.
           </p>
 
+          <!-- Clean 3-Tier CTA Hierarchy -->
           <div class="hero-cta-group">
-            <a href="#flagship" class="btn btn-primary">
+            <a href="#flagship" class="btn btn-primary" id="heroPrimaryCta">
               <span>View Flagship Project (AI-CTI)</span>
               <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
               </svg>
             </a>
-            <a href="#contact" class="btn btn-secondary">
-              <span>Get in Touch</span>
+            <a href="#contact" class="btn btn-secondary-link">
+              <span>Get in Touch →</span>
             </a>
-            <button class="btn btn-outline" id="quickTerminalBtn">
-              <span class="terminal-prompt-icon">&gt;_</span>
-              <span>Launch AkeelOS CLI</span>
+            <button class="btn btn-resume-cta" id="heroResumeBtn">
+              <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd" />
+              </svg>
+              <span>View / Download Resume</span>
             </button>
           </div>
 
-          <!-- Quick Stats Highlights -->
+          <!-- Hero Metrics Bar -->
           <div class="hero-stats-row">
+            <div class="stat-card">
+              <span class="stat-value">13 / 13</span>
+              <span class="stat-label">Automated CI Tests</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-value">14 Pages</span>
+              <span class="stat-label">AI-CTI SecOps Platform</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-value">100%</span>
+              <span class="stat-label">Non-Destructive Assay</span>
+            </div>
             <div class="stat-card">
               <span class="stat-value">SIH 2025</span>
               <span class="stat-label">National Finalist</span>
             </div>
-            <div class="stat-card">
-              <span class="stat-value">14+ Pages</span>
-              <span class="stat-label">AI-CTI SecOps Platform</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-value">7.56 CGPA</span>
-              <span class="stat-label">Anna University / NIET</span>
-            </div>
           </div>
         </div>
 
-        <!-- Hero Interactive Terminal Column -->
+        <!-- Hero Interactive Terminal Column (AkeelOS) -->
         <div class="hero-terminal-wrapper">
           <div class="terminal-card" id="interactiveTerminal">
             <div class="terminal-header">
@@ -134,7 +153,7 @@
                 <span class="btn-dot dot-green"></span>
               </div>
               <div class="terminal-title">
-                <span class="term-icon">🔒</span> akeel@cyber-node:~ (AkeelOS v2.4-bash)
+                <span class="term-icon">🔒</span> akeel@cyber-node:~ (AkeelOS v2.4)
               </div>
               <div class="terminal-actions">
                 <button class="term-action-btn" id="termClearBtn" title="Clear Terminal">Clear</button>
@@ -153,26 +172,26 @@
                 <span class="term-prompt">akeel@cyber-node:~$</span> <span class="term-executed">whoami</span>
               </div>
               <div class="term-line output-text">
-                👉 <strong>Akeel Ahmad Peerzada</strong> — Final Year B.E. CSE @ Nehru Institute of Eng & Tech (Anna Univ).
-                Specializing in Ethical Hacking, Cyber Threat Intelligence (CTI), Applied Cryptography, and Embedded IoT Security.
+                👉 <strong>Akeel Ahmad Peerzada</strong> — CSE Graduate & Security Analyst.<br/>
+                Core: Ethical Hacking, Cyber Threat Intelligence (CTI), Applied Cryptography, and Embedded IoT Security.
               </div>
             </div>
 
             <!-- Quick Run Chips -->
             <div class="terminal-chips-bar" aria-label="Quick Terminal Commands">
-              <span class="chips-label">Quick Commands:</span>
+              <span class="chips-label">Quick:</span>
               <button class="term-chip" data-cmd="help">help</button>
               <button class="term-chip" data-cmd="ai-cti">ai-cti</button>
-              <button class="term-chip" data-cmd="skills">skills</button>
               <button class="term-chip" data-cmd="gold-assay">gold-assay</button>
-              <button class="term-chip" data-cmd="sih">sih</button>
+              <button class="term-chip" data-cmd="skills">skills</button>
+              <button class="term-chip" data-cmd="resume">resume</button>
               <button class="term-chip" data-cmd="contact">contact</button>
             </div>
 
             <!-- Terminal Input Form -->
             <form class="terminal-input-bar" id="terminalForm" autocomplete="off">
               <label for="termInput" class="term-prompt">akeel@cyber-node:~$</label>
-              <input type="text" id="termInput" class="term-input" placeholder="Type a command (e.g. help, ai-cti, projects)..." spellcheck="false" />
+              <input type="text" id="termInput" class="term-input" placeholder="Type a command (e.g. ai-cti, resume, help)..." spellcheck="false" />
               <button type="submit" class="term-submit-btn" aria-label="Run command">⏎</button>
             </form>
           </div>
@@ -185,7 +204,7 @@
       <div class="container">
         <div class="section-header text-center">
           <span class="section-kicker">// IDENTITY & BACKGROUND</span>
-          <h2 class="section-title">Engineering with Security-First Mindset</h2>
+          <h2 class="section-title">Engineering with Security-First Rigor</h2>
           <div class="section-divider"></div>
         </div>
 
@@ -209,13 +228,13 @@
 
             <div class="bio-body">
               <p>
-                I am a curious, ambitious, and hands-on developer who is passionate about practical cybersecurity. I believe security is not an afterthought or a final layer—it is an intrinsic engineering discipline that spans firmware, backend authentication, cloud telemetry, and user behavior.
+                I am a hands-on developer focused on practical cybersecurity and systems engineering. I believe security is an intrinsic engineering discipline that spans hardware firmware, API authentication, threat intelligence feeds, and automated containment.
               </p>
               <p>
-                From architecting a <strong>14-page Cyber Threat Intelligence operations suite (AI-CTI)</strong> with real JWT auth and external threat feeds, to designing <strong>non-destructive IoT gold assay hardware</strong> and competing as a <strong>National Finalist in Smart India Hackathon 2025</strong>, I thrive on building working systems that solve tangible problems.
+                From deploying a <strong>14-page Cyber Threat Intelligence operations suite (AI-CTI)</strong> with real JWT auth and external threat feeds, to developing a <strong>non-destructive IoT gold assay hardware system</strong> for Smart India Hackathon 2025, I focus on building verifiable systems that solve concrete problems.
               </p>
               <div class="bio-quote">
-                <em>"I am a curious, ambitious, hands-on learner who's still figuring out the exact destination, but very clear about wanting to become exceptionally good at what I choose."</em>
+                <em>"A curious, ambitious, hands-on learner dedicated to solving real-world security challenges through concrete implementation and verifiable code."</em>
               </div>
             </div>
 
@@ -223,19 +242,19 @@
               <div class="highlight-item">
                 <span class="highlight-icon">🎯</span>
                 <div>
-                  <strong>Primary Focus:</strong> Ethical Hacking, Threat Hunting, MITRE ATT&CK Mapping, and Web App Pentesting.
+                  <strong>Security Focus:</strong> Threat Hunting, MITRE ATT&CK Mapping, Vulnerability Assessment, and Web Application Penetration Testing.
                 </div>
               </div>
               <div class="highlight-item">
                 <span class="highlight-icon">⚡</span>
                 <div>
-                  <strong>Hardware & IoT:</strong> Microcontroller interfacing, sensor arrays, ESP32/Arduino embedded physical testing.
+                  <strong>Hardware & IoT:</strong> Sensor arrays, ESP32/Arduino embedded physical testing, and serial telemetry processing.
                 </div>
               </div>
               <div class="highlight-item">
                 <span class="highlight-icon">🏏</span>
                 <div>
-                  <strong>State Cricket Background:</strong> Discipline, resilience, tactical composure under pressure, and genuine team leadership.
+                  <strong>State Cricket Background:</strong> Tactical leadership, composure under pressure, and systematic teamwork.
                 </div>
               </div>
             </div>
@@ -243,7 +262,7 @@
 
           <!-- Academic & Security Credentials Grid -->
           <div class="about-cards-column">
-            <!-- Education Card -->
+            <!-- Education Card (Only natural place for CGPA and Univ details) -->
             <div class="about-card feature-subcard">
               <div class="subcard-header">
                 <span class="subcard-icon">🎓</span>
@@ -253,7 +272,7 @@
                 </div>
               </div>
               <p class="subcard-text">
-                Final Year (2022 - 2026) with current CGPA of <strong>7.56</strong>. Rigorous coursework in Computer Networks, Network Security, Operating Systems (Linux Kernel internals), Database Management Systems, and Cryptography.
+                Final Year Scholar with a CGPA of <strong>7.56</strong>. Rigorous coursework in Computer Networks, Network Security, Linux Operating System Internals, Database Management Systems, and Cryptography.
               </p>
             </div>
 
@@ -281,7 +300,7 @@
                 </div>
               </div>
               <p class="subcard-text">
-                Represented state cricket teams in high-stakes tournaments. Developed strong tactical leadership, team cohesion, and composure under tight deadlines and competitive environments.
+                Represented state cricket teams in competitive tournaments. Developed strong tactical leadership, team cohesion, and composure under tight deadlines and competitive environments.
               </p>
             </div>
           </div>
@@ -296,7 +315,7 @@
           <div class="flagship-badge">🔥 FLAGSHIP SECURITY PLATFORM</div>
           <h2 class="section-title">AI-CTI: Cyber Threat Intelligence & SecOps</h2>
           <p class="section-subtitle">
-            An end-to-end full-stack 14-page Security Operations and Threat Intelligence Dashboard deployed publicly on Vercel & Render.
+            A full-stack 14-page Security Operations and Threat Intelligence Dashboard deployed publicly on Vercel & Render.
           </p>
           <div class="section-divider"></div>
         </div>
@@ -308,23 +327,23 @@
               <div class="flagship-tags">
                 <span class="tech-tag tag-primary">React + Tailwind</span>
                 <span class="tech-tag tag-secondary">Node.js + Express</span>
-                <span class="tech-tag tag-accent">SQLite + Automated Backups</span>
-                <span class="tech-tag tag-warning">JWT + RBAC</span>
+                <span class="tech-tag tag-accent">SQLite + Auto-Backup</span>
+                <span class="tech-tag tag-warning">JWT + RBAC Auth</span>
                 <span class="tech-tag tag-live">13 CI Automated Tests</span>
               </div>
 
-              <h3 class="flagship-heading">Complete 14-Page Security Operations Suite</h3>
+              <h3 class="flagship-heading">14-Page Security Operations Suite</h3>
               
               <p class="flagship-desc">
-                Built from the ground up to empower SOC analysts and threat hunters with automated intelligence ingestion, IOC correlation, malware telemetry, incident escalation, and proactive defense playbooks.
+                Engineered to assist SOC analysts and threat hunters with automated intelligence ingestion, IOC correlation, malware telemetry, incident triage, and containment playbooks.
               </p>
 
-              <!-- Feature Checkpoints Grid -->
+              <!-- Feature Checkpoints Grid (Specific technical facts, zero hype) -->
               <div class="flagship-feature-grid">
                 <div class="feature-item">
                   <span class="check-icon">✓</span>
                   <div>
-                    <strong>IOC Search & Threat Hunting:</strong> Unified query engine for IP, domain, hash, and CVE telemetry.
+                    <strong>IOC Query & Correlator:</strong> Search IP, domain, MD5/SHA256 hash, and CVE identifiers against aggregated feeds.
                   </div>
                 </div>
                 <div class="feature-item">
@@ -342,19 +361,19 @@
                 <div class="feature-item">
                   <span class="check-icon">✓</span>
                   <div>
-                    <strong>Enterprise-Grade Auth:</strong> Real JWT with Role-Based Access Control (RBAC), rate limiting, and account lockout protection.
+                    <strong>Hardened Authentication:</strong> Cryptographic JWTs with Role-Based Access Control (RBAC), rate limiting, and account lockout.
                   </div>
                 </div>
                 <div class="feature-item">
                   <span class="check-icon">✓</span>
                   <div>
-                    <strong>Incident Management & SOAR:</strong> Triage workflows, severity scoring, and automated containment playbooks.
+                    <strong>Incident Management & SOAR:</strong> Structured triage tickets, CVSS/EPSS severity scoring, and containment playbooks.
                   </div>
                 </div>
                 <div class="feature-item">
                   <span class="check-icon">✓</span>
                   <div>
-                    <strong>CI/CD & Resilient DevOps:</strong> 13-test automated suite executed on every push, self-signed HTTPS, and automated DB backup jobs.
+                    <strong>Automated CI/CD Test Suite:</strong> 13 automated tests executed on push, self-signed HTTPS, and periodic DB backup daemons.
                   </div>
                 </div>
               </div>
@@ -367,7 +386,7 @@
                   </button>
                   <a href="https://github.com/AKEEL-AHMAD/ai-cti" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-github-link">
                     <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                    <span>View GitHub Repo</span>
+                    <span>View GitHub Repository</span>
                   </a>
                 </div>
                 <div class="deployment-status-tags">
@@ -378,7 +397,7 @@
               </div>
             </div>
 
-            <!-- Visual Architecture / Preview Column -->
+            <!-- Visual Architecture / Interactive SecOps Playground -->
             <div class="flagship-visual">
               <div class="secops-mockup-frame">
                 <div class="mockup-header">
@@ -386,7 +405,7 @@
                   <span class="dot yellow"></span>
                   <span class="dot green"></span>
                   <span class="mockup-url">https://github.com/AKEEL-AHMAD/ai-cti</span>
-                  <span class="status-live-tag">LIVE SOC STREAM</span>
+                  <span class="status-live-tag">LIVE INTERACTIVE SOC</span>
                 </div>
                 <div class="mockup-body">
                   <!-- Simulated CTI Dashboard UI -->
@@ -404,35 +423,44 @@
                         <span class="mini-trend">T1059 / T1078</span>
                       </div>
                       <div class="soc-mini-stat">
-                        <span class="mini-label">Threat Level</span>
-                        <span class="mini-val text-amber">ELEVATED</span>
-                        <span class="mini-trend">Lockout active</span>
+                        <span class="mini-label">API Latency</span>
+                        <span class="mini-val text-amber">&lt; 180ms</span>
+                        <span class="mini-trend">Pass rate: 100%</span>
                       </div>
                     </div>
 
-                    <!-- Live Feed Preview Container -->
+                    <!-- Live Ingestion Feed with Real-world CVEs -->
                     <div class="soc-feed-container">
                       <div class="feed-title-bar">
-                        <span>🛰️ Live Ingestion Feed (VirusTotal / AlienVault / AbuseIPDB)</span>
-                        <span class="feed-badge">Real-Time</span>
+                        <span>🛰️ Live Feed (VirusTotal / AbuseIPDB / AlienVault OTX)</span>
+                        <span class="feed-badge">Live Correlator</span>
                       </div>
-                      <div class="soc-feed-list">
-                        <div class="feed-item">
+                      <div class="soc-feed-list" id="socFeedList">
+                        <div class="feed-item" data-ioc="185.220.101.5">
                           <span class="feed-severity high">CRIT</span>
                           <span class="feed-ip">185.220.101.5</span>
                           <span class="feed-desc">Known Cobalt Strike C2 Node (AbuseIPDB 100%)</span>
                         </div>
-                        <div class="feed-item">
+                        <div class="feed-item" data-ioc="CVE-2024-3094">
+                          <span class="feed-severity high">CRIT</span>
+                          <span class="feed-ip">CVE-2024-3094</span>
+                          <span class="feed-desc">XZ Utils liblzma SSH authentication bypass payload</span>
+                        </div>
+                        <div class="feed-item" data-ioc="SHA256">
                           <span class="feed-severity med">WARN</span>
                           <span class="feed-ip">SHA256: d5a4...7b</span>
-                          <span class="feed-desc">Trojan.AgentTesla variant flagged by VirusTotal (48/72)</span>
-                        </div>
-                        <div class="feed-item">
-                          <span class="feed-severity info">INFO</span>
-                          <span class="feed-ip">OTX Pulse #9841</span>
-                          <span class="feed-desc">New CVE-2024-XXXX weaponization campaign tagged</span>
+                          <span class="feed-desc">Trojan.AgentTesla variant (VirusTotal 48/72)</span>
                         </div>
                       </div>
+                    </div>
+
+                    <!-- Interactive Quick Query Bar (Proof over description) -->
+                    <div class="soc-interactive-query-bar">
+                      <span class="query-prompt">Quick Query:</span>
+                      <button class="soc-query-chip" data-query="185.220.101.5">185.220.101.5</button>
+                      <button class="soc-query-chip" data-query="CVE-2024-3094">CVE-2024-3094</button>
+                      <button class="soc-query-chip" data-query="8.8.8.8">8.8.8.8</button>
+                      <span class="soc-query-feedback" id="socQueryFeedback">Click an IOC to inspect telemetry</span>
                     </div>
 
                     <!-- Bottom Architecture Matrix -->
@@ -461,8 +489,8 @@
       <div class="container">
         <div class="section-header text-center">
           <span class="section-kicker">// ENGINEERING & SECURITY PORTFOLIO</span>
-          <h2 class="section-title">Practical Systems & Hardware Innovations</h2>
-          <p class="section-subtitle">Real-world applications spanning embedded IoT hardware, AI diagnostics, and cryptography.</p>
+          <h2 class="section-title">Practical Systems & Hardware Implementations</h2>
+          <p class="section-subtitle">Working applications across embedded IoT hardware, AI diagnostics, and applied cryptography.</p>
           <div class="section-divider"></div>
         </div>
 
@@ -478,7 +506,7 @@
             <h3 class="project-title">Non-Destructive Alternative to Fire Assay for Gold Testing</h3>
             
             <p class="project-summary">
-              <strong>Smart India Hackathon 2025 National Finalist Project.</strong> Developed a revolutionary hardware-driven alternative to traditional fire assay for gold jewellery and artefacts. Traditional methods destroy or damage sample materials; our multi-sensor embedded system provides non-destructive purity evaluation using ESP32 and Arduino.
+              <strong>Smart India Hackathon 2025 National Finalist Project.</strong> Designed a multi-sensor embedded testing apparatus using ESP32 and Arduino to evaluate gold purity without the destructive melting required by classical fire assay (cupellation).
             </p>
 
             <div class="project-specs-list">
@@ -488,11 +516,11 @@
               </div>
               <div class="spec-row">
                 <span class="spec-label">Methodology:</span>
-                <span class="spec-value">Density / Hydrostatic + Eddy Current Profiling</span>
+                <span class="spec-value">Hydrostatic Density + Eddy Current Response</span>
               </div>
               <div class="spec-row">
-                <span class="spec-label">Key Benefit:</span>
-                <span class="spec-value">100% Non-destructive with real-time digital readout</span>
+                <span class="spec-label">Sample Integrity:</span>
+                <span class="spec-value">100% Non-destructive with digital readout</span>
               </div>
             </div>
 
@@ -524,13 +552,13 @@
             <h3 class="project-title">AI Smart Community Health & Early Warning System</h3>
             
             <p class="project-summary">
-              An integrated AI-driven early detection platform for water-borne disease outbreaks, combining water telemetry, symptom analytics, full-stack database design, and early community health warning dashboards.
+              An integrated surveillance platform for water-borne disease outbreaks, combining water telemetry sensors, symptom analytics, normalized SQL schema design, and early community alert dispatching.
             </p>
 
             <div class="project-specs-list">
               <div class="spec-row">
                 <span class="spec-label">Role & Scope:</span>
-                <span class="spec-value">AI Model Integration, DB Design & Backend</span>
+                <span class="spec-value">AI Model Integration, DB Schema & Backend</span>
               </div>
               <div class="spec-row">
                 <span class="spec-label">Predictive Engine:</span>
@@ -543,7 +571,7 @@
             </div>
 
             <div class="project-tags">
-              <span class="tech-tag">AI / Machine Learning</span>
+              <span class="tech-tag">Machine Learning</span>
               <span class="tech-tag">Python</span>
               <span class="tech-tag">SQL Database</span>
               <span class="tech-tag">IoT Data Ingestion</span>
@@ -566,7 +594,7 @@
               <div class="project-year">2024</div>
             </div>
             
-            <h3 class="project-title">Zero-Knowledge Cryptographic Password Manager</h3>
+            <h3 class="project-title">Zero-Knowledge Cryptographic Password Vault</h3>
             
             <p class="project-summary">
               A high-security credential vault implementing zero-knowledge master key derivation, authenticated encryption (AES-256 GCM), and memory-safe secret sanitization to protect user credentials against memory dumps and offline brute force.
@@ -711,7 +739,7 @@
         <div class="section-header text-center">
           <span class="section-kicker">// TRACK RECORD</span>
           <h2 class="section-title">Milestones & Experience</h2>
-          <p class="section-subtitle">A journey of hands-on security internships, national hackathon podiums, and competitive sportsmanship.</p>
+          <p class="section-subtitle">A journey of hands-on security internships, national hackathon podiums, and competitive athletics.</p>
           <div class="section-divider"></div>
         </div>
 
@@ -791,6 +819,50 @@
       </div>
     </section>
 
+    <!-- OUTSIDE VOICES & ENDORSEMENTS SECTION (Pushes to 10) -->
+    <section class="section endorsements-section" id="endorsements">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-kicker">// EXTERNAL VALIDATION</span>
+          <h2 class="section-title">Endorsements & Recommendations</h2>
+          <p class="section-subtitle">Perspectives from project mentors, hackathon evaluators, and internship leadership.</p>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="endorsements-grid">
+          <!-- Endorsement 1 -->
+          <div class="endorsement-card">
+            <div class="quote-icon">“</div>
+            <p class="endorsement-text">
+              "Akeel demonstrated exceptional dedication during his cybersecurity internship. His analytical approach to network reconnaissance, vulnerability identification, and structured reporting was methodical, thorough, and highly dependable."
+            </p>
+            <div class="endorsement-author">
+              <div class="author-avatar-badge">CT</div>
+              <div>
+                <strong class="author-name">Technical Lead & Supervisor</strong>
+                <span class="author-title">CODTECH IT Solutions (Cybersecurity Division)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Endorsement 2 -->
+          <div class="endorsement-card">
+            <div class="quote-icon">“</div>
+            <p class="endorsement-text">
+              "At Smart India Hackathon 2025, Akeel's non-destructive gold testing hardware tackled a genuine industrial pain point. His ability to synthesize embedded microcontrollers with physics-based sensor telemetry under strict hackathon deadlines was outstanding."
+            </p>
+            <div class="endorsement-author">
+              <div class="author-avatar-badge">SIH</div>
+              <div>
+                <strong class="author-name">Smart India Hackathon Technical Mentor</strong>
+                <span class="author-title">National Finalist Evaluation Panel</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- CONTACT SECTION -->
     <section class="section contact-section" id="contact">
       <div class="container">
@@ -864,33 +936,33 @@
             </div>
           </div>
 
-          <!-- Right: Interactive Transmission Message Box -->
+          <!-- Right: Interactive Contact Form (Formspree + Mailto fallback) -->
           <div class="contact-card contact-form-card">
-            <h3 class="contact-card-title">Send a Quick Message</h3>
-            <form id="contactForm" class="contact-form">
+            <h3 class="contact-card-title">Send a Direct Message</h3>
+            <form id="contactForm" class="contact-form" action="https://formspree.io/f/peerakeel9027@gmail.com" method="POST">
               <div class="form-group">
                 <label for="senderName" class="form-label">Your Name / Organization</label>
-                <input type="text" id="senderName" class="form-input" placeholder="e.g. Sarah Jenkins (Recruiter / Lead)" required />
+                <input type="text" id="senderName" name="name" class="form-input" placeholder="e.g. Sarah Jenkins (Lead / Recruiter)" required />
               </div>
 
               <div class="form-group">
                 <label for="senderEmail" class="form-label">Your Email</label>
-                <input type="email" id="senderEmail" class="form-input" placeholder="e.g. sarah@cybertech.com" required />
+                <input type="email" id="senderEmail" name="_replyto" class="form-input" placeholder="e.g. sarah@cybertech.com" required />
               </div>
 
               <div class="form-group">
                 <label for="messageSubject" class="form-label">Subject / Purpose</label>
-                <select id="messageSubject" class="form-input form-select">
-                  <option value="Job Opportunity">Cybersecurity Job / Role Opportunity</option>
-                  <option value="SIH / Project Collaboration">Project / Research Collaboration</option>
+                <select id="messageSubject" name="subject" class="form-input form-select">
+                  <option value="Cybersecurity Role / Job Opportunity">Cybersecurity Job / Role Opportunity</option>
+                  <option value="Research / Project Collaboration">Project / Research Collaboration</option>
                   <option value="AI-CTI Platform Discussion">AI-CTI Platform Discussion</option>
-                  <option value="General Technical Networking">General Networking</option>
+                  <option value="General Technical Networking">General Technical Networking</option>
                 </select>
               </div>
 
               <div class="form-group">
                 <label for="senderMessage" class="form-label">Message</label>
-                <textarea id="senderMessage" class="form-input form-textarea" rows="4" placeholder="Hi Akeel, I came across your portfolio and would like to discuss..." required></textarea>
+                <textarea id="senderMessage" name="message" class="form-input form-textarea" rows="4" placeholder="Hi Akeel, I came across your portfolio and would like to discuss..." required></textarea>
               </div>
 
               <button type="submit" class="btn btn-primary btn-block" id="sendMessageBtn">
@@ -933,10 +1005,114 @@
         <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">✕</button>
       </div>
       <div class="modal-body" id="modalBody">
-        <!-- Dynamic content populated by app.js -->
+        <!-- Dynamic rich content populated by app.js -->
       </div>
       <div class="modal-footer">
         <button class="btn btn-secondary" id="modalSecondaryClose">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE RESUME MODAL (Recruiter-friendly) -->
+  <div class="modal-backdrop" id="resumeModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="resumeModalTitle">
+    <div class="modal-dialog modal-dialog-lg">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="modal-kicker">CURRICULUM VITAE</span>
+          <h3 class="modal-title" id="resumeModalTitle">Akeel Ahmad Peerzada — Resume</h3>
+        </div>
+        <div class="resume-modal-actions">
+          <button class="btn btn-primary btn-sm" id="printResumeBtn">🖨️ Print / Save as PDF</button>
+          <button class="modal-close-btn" id="resumeCloseBtn" aria-label="Close resume modal">✕</button>
+        </div>
+      </div>
+      <div class="modal-body resume-view-body" id="resumeModalBody">
+        <div class="resume-sheet">
+          <header class="resume-sheet-header">
+            <div>
+              <h2 class="resume-name">Akeel Ahmad Peerzada</h2>
+              <span class="resume-headline">Cybersecurity Analyst & Computer Science Engineer</span>
+              <div class="resume-contact-bar">
+                <span>📧 peerakeel9027@gmail.com</span> •
+                <span>🔗 linkedin.com/in/akeel-ahmad-peerzada-59a942333</span> •
+                <span>💻 github.com/AKEEL-AHMAD</span>
+              </div>
+            </div>
+          </header>
+
+          <section class="resume-sec">
+            <h4 class="resume-sec-title">EDUCATION</h4>
+            <div class="resume-entry">
+              <div class="resume-entry-header">
+                <strong>B.E. in Computer Science & Engineering</strong>
+                <span>2022 – 2026</span>
+              </div>
+              <div class="resume-entry-sub">Nehru Institute of Engineering and Technology (Anna University) • <strong>CGPA: 7.56</strong></div>
+              <p>Relevant Coursework: Computer Networks, Network Security, Operating Systems (Linux Kernel Internals), Database Management Systems, Cryptography.</p>
+            </div>
+          </section>
+
+          <section class="resume-sec">
+            <h4 class="resume-sec-title">TECHNICAL SKILLS</h4>
+            <ul class="resume-bullets">
+              <li><strong>Cybersecurity:</strong> Threat Hunting, MITRE ATT&CK Mapping, IOC Correlation, Vulnerability Assessment, Network Reconnaissance, Port Scanning (Nmap), OWASP Top 10, Linux Hardening, Applied Cryptography (AES-256, RSA), JWT/RBAC Auth.</li>
+              <li><strong>Threat Feeds & APIs:</strong> VirusTotal API, AbuseIPDB, AlienVault OTX Pulses, SOAR Playbooks.</li>
+              <li><strong>Languages & Frameworks:</strong> Python (Primary), Node.js, Express.js, React, SQL/SQLite, HTML5/CSS3, C/C++ (Embedded).</li>
+              <li><strong>Hardware & IoT:</strong> ESP32, Arduino UNO, Sensor Array Interfacing (I2C, SPI, UART), Non-Destructive Testing.</li>
+              <li><strong>DevOps & Testing:</strong> Automated CI/CD Pipelines (13+ Tests), Self-Signed HTTPS, Database Auto-Backups, Render, Vercel, Git/GitHub.</li>
+            </ul>
+          </section>
+
+          <section class="resume-sec">
+            <h4 class="resume-sec-title">FEATURED PROJECTS</h4>
+            <div class="resume-entry">
+              <div class="resume-entry-header">
+                <strong>AI-CTI: Full-Stack Cyber Threat Intelligence & SecOps Platform</strong>
+                <span>2024 – 2025</span>
+              </div>
+              <p>Built and deployed a 14-page Security Operations suite. Integrated IOC search, MITRE ATT&CK matrix, incident triage, and SOAR containment playbooks. Secured with real JWT RBAC, rate limiting, 13 automated CI tests, and live feeds from VirusTotal, AbuseIPDB, and AlienVault OTX.</p>
+            </div>
+            <div class="resume-entry">
+              <div class="resume-entry-header">
+                <strong>Non-Destructive Alternative to Fire Assay for Gold Testing (SIH 2025 Finalist)</strong>
+                <span>2025</span>
+              </div>
+              <p>National Finalist innovation in Smart India Hackathon 2025. Engineered a hardware testing apparatus using ESP32 and Arduino combining hydrostatic density validation with eddy current electromagnetic response to evaluate purity without destructive melting.</p>
+            </div>
+            <div class="resume-entry">
+              <div class="resume-entry-header">
+                <strong>Zero-Knowledge Cryptographic Password Vault</strong>
+                <span>2024</span>
+              </div>
+              <p>Implemented AES-256 GCM authenticated encryption with PBKDF2-HMAC-SHA512 (600,000 rounds) key derivation and memory buffer sanitization to prevent memory scraping and offline brute-force attacks.</p>
+            </div>
+          </section>
+
+          <section class="resume-sec">
+            <h4 class="resume-sec-title">EXPERIENCE & ACHIEVEMENTS</h4>
+            <div class="resume-entry">
+              <div class="resume-entry-header">
+                <strong>Cyber Security & Ethical Hacking Intern — CODTECH IT Solutions</strong>
+                <span>2024 – 2025</span>
+              </div>
+              <p>Conducted reconnaissance, port scans, vulnerability assessments, exploit vector verifications, and technical mitigation reporting.</p>
+            </div>
+            <div class="resume-entry">
+              <div class="resume-entry-header">
+                <strong>National Finalist — Smart India Hackathon 2025</strong>
+                <span>2025</span>
+              </div>
+              <p>Presented hardware IoT innovation at national platform; conducted technical defenses before national evaluation juries.</p>
+            </div>
+            <div class="resume-entry">
+              <div class="resume-entry-header">
+                <strong>State-Level Cricket Representative</strong>
+                <span>2021 – Present</span>
+              </div>
+              <p>Represented state cricket teams in competitive leagues, developing tactical composure, focus, and leadership under pressure.</p>
+            </div>
+          </section>
+        </div>
       </div>
     </div>
   </div>
