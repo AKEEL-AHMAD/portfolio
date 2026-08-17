@@ -212,18 +212,21 @@ body {
 }
 
 .btn-resume-cta {
-  background: rgba(14, 21, 37, 0.8);
+  background: rgba(14, 21, 37, 0.9);
   color: var(--color-cyan);
-  border: 1px solid rgba(6, 182, 212, 0.35);
+  border: 1px solid rgba(6, 182, 212, 0.45);
   font-family: var(--font-mono);
-  font-size: 0.84rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .btn-resume-cta:hover {
-  background: rgba(6, 182, 212, 0.15);
+  background: rgba(6, 182, 212, 0.2);
   border-color: var(--color-cyan);
-  color: #f8fafc;
+  color: #ffffff;
   transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
 }
 
 .btn-sm {
@@ -252,7 +255,7 @@ body {
   z-index: 1000;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  background: rgba(6, 10, 18, 0.85);
+  background: rgba(6, 10, 18, 0.88);
   border-bottom: 1px solid var(--border-subtle);
   transition: background var(--transition-normal);
 }
@@ -367,18 +370,22 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.4rem 0.85rem;
-  background: rgba(6, 182, 212, 0.1);
-  border: 1px solid rgba(6, 182, 212, 0.3);
+  padding: 0.45rem 0.95rem;
+  background: rgba(6, 182, 212, 0.15);
+  border: 1px solid rgba(6, 182, 212, 0.4);
   border-radius: 6px;
   color: var(--color-cyan);
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
 }
 
 .nav-resume-btn:hover {
   background: var(--color-cyan);
   color: #041a10;
+  box-shadow: 0 0 14px rgba(6, 182, 212, 0.4);
 }
 
 /* Mobile Toggle */
@@ -2067,37 +2074,41 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(4, 7, 13, 0.82);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  z-index: 2000;
+  background: rgba(4, 7, 13, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 99999;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: opacity var(--transition-normal);
+  transition: opacity var(--transition-normal), visibility var(--transition-normal);
 }
 
 .modal-backdrop.active {
-  opacity: 1;
-  pointer-events: auto;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
 }
 
 .modal-dialog {
   background: #0d1424;
   border: 1px solid var(--border-card);
   border-radius: 16px;
-  max-width: 820px;
+  max-width: 840px;
   width: 100%;
   max-height: 88vh;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(16, 185, 129, 0.15);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(16, 185, 129, 0.18);
   transform: scale(0.95);
   transition: transform var(--transition-normal);
   overflow: hidden;
+  position: relative;
+  z-index: 100000;
 }
 
 .modal-dialog-lg {
@@ -2114,7 +2125,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(15, 23, 42, 0.95);
+  background: rgba(15, 23, 42, 0.98);
 }
 
 .modal-kicker {
@@ -2143,8 +2154,8 @@ body {
   border: 1px solid var(--border-subtle);
   color: var(--text-secondary);
   font-size: 1.1rem;
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   border-radius: 6px;
   cursor: pointer;
   display: flex;
@@ -2154,7 +2165,7 @@ body {
 }
 
 .modal-close-btn:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.1);
   color: var(--text-primary);
 }
 
@@ -2287,7 +2298,7 @@ body {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  z-index: 3000;
+  z-index: 999999;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;

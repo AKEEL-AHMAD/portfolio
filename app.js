@@ -72,10 +72,19 @@ function initTerminal() {
   const termInput = document.getElementById('termInput');
   const terminalOutput = document.getElementById('terminalOutput');
   const termClearBtn = document.getElementById('termClearBtn');
+  const quickTerminalBtn = document.getElementById('quickTerminalBtn');
   const interactiveTerminal = document.getElementById('interactiveTerminal');
   const chipButtons = document.querySelectorAll('.term-chip');
 
   if (!terminalForm || !termInput || !terminalOutput) return;
+
+  if (quickTerminalBtn && interactiveTerminal) {
+    quickTerminalBtn.addEventListener('click', () => {
+      interactiveTerminal.scrollIntoView({ behavior: 'smooth' });
+      termInput.focus();
+      showToast('Terminal activated. Type commands below.');
+    });
+  }
 
   const commandHistory = [];
   let historyIndex = -1;
@@ -463,7 +472,8 @@ Secret Payload  ──► AES-256 GCM Authenticated Encryption (12-byte IV)   �
   }
 
   openModalButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
       const proj = btn.getAttribute('data-project');
       if (proj) openModal(proj);
     });
@@ -484,35 +494,52 @@ Secret Payload  ──► AES-256 GCM Authenticated Encryption (12-byte IV)   �
 }
 
 /* ==========================================================================
-   4. RESUME VIEWER & PRINT MODAL
+   4. RESUME VIEWER & PRINT MODAL (Rock-Solid Multi-Trigger System)
    ========================================================================== */
 function initResumeModal() {
   const resumeModal = document.getElementById('resumeModal');
-  const navResumeBtn = document.getElementById('navResumeBtn');
-  const heroResumeBtn = document.getElementById('heroResumeBtn');
   const resumeCloseBtn = document.getElementById('resumeCloseBtn');
   const printResumeBtn = document.getElementById('printResumeBtn');
 
   if (!resumeModal) return;
 
   window.openResumeModal = function() {
-    resumeModal.classList.add('active');
-    resumeModal.setAttribute('aria-hidden', 'false');
+    const modal = document.getElementById('resumeModal');
+    if (!modal) return;
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    showToast('Viewing Curriculum Vitae. Click "Print" to save as PDF.');
   };
 
-  function closeResumeModal() {
-    resumeModal.classList.remove('active');
-    resumeModal.setAttribute('aria-hidden', 'true');
+  window.closeResumeModal = function() {
+    const modal = document.getElementById('resumeModal');
+    if (!modal) return;
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+  };
+
+  // Global event delegation for all resume buttons
+  document.addEventListener('click', (e) => {
+    const resumeBtn = e.target.closest('#navResumeBtn, #heroResumeBtn, .nav-resume-btn, .btn-resume-cta, [data-action="resume"]');
+    if (resumeBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      openResumeModal();
+    }
+  });
+
+  if (resumeCloseBtn) {
+    resumeCloseBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeResumeModal();
+    });
   }
 
-  if (navResumeBtn) navResumeBtn.addEventListener('click', openResumeModal);
-  if (heroResumeBtn) heroResumeBtn.addEventListener('click', openResumeModal);
-  if (resumeCloseBtn) resumeCloseBtn.addEventListener('click', closeResumeModal);
-
   if (printResumeBtn) {
-    printResumeBtn.addEventListener('click', () => {
+    printResumeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
       window.print();
     });
   }
@@ -696,7 +723,7 @@ function initContactForm() {
 function initNavigation() {
   const mobileToggle = document.getElementById('mobileToggle');
   const navMenu = document.getElementById('navMenu');
-  const navLinks = document.querySelectorAll('.nav-link');
+  const navAnchorLinks = document.querySelectorAll('a.nav-link');
   const sections = document.querySelectorAll('section');
 
   if (mobileToggle && navMenu) {
@@ -705,7 +732,7 @@ function initNavigation() {
       mobileToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
 
-    navLinks.forEach((link) => {
+    navAnchorLinks.forEach((link) => {
       link.addEventListener('click', () => {
         navMenu.classList.remove('open');
         mobileToggle.setAttribute('aria-expanded', 'false');
@@ -723,7 +750,7 @@ function initNavigation() {
       }
     });
 
-    navLinks.forEach((link) => {
+    navAnchorLinks.forEach((link) => {
       link.classList.remove('active');
       if (link.getAttribute('href') === `#${current}`) {
         link.classList.add('active');
