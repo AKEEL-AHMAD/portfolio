@@ -1,0 +1,20 @@
+{
+  "name": "akeel-ahmad-portfolio",
+  "version": "1.0.0",
+  "description": "Akeel Ahmad Peerzada - Cybersecurity Analyst & IoT Developer Portfolio",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "portfolio",
+    "cybersecurity",
+    "threat-intelligence",
+    "sih2025",
+    "iot",
+    "secops"
+  ],
+  "author": "Akeel Ahmad Peerzada",
+  "license": "MIT"
+}
