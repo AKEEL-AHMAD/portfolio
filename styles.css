@@ -375,67 +375,151 @@ body {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.4rem;
 }
 
+/* Base Nav Capsule Button */
 .nav-link {
-  color: #94a3b8;
-  font-size: 0.82rem;
-  font-weight: 500;
+  font-size: 0.78rem;
+  font-weight: 600;
   text-decoration: none;
-  padding: 0.35rem 0.65rem;
-  border-radius: 6px;
+  padding: 0.32rem 0.75rem;
+  border-radius: 999px;
   transition: all var(--transition-fast);
-  position: relative;
-  background: none;
-  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  border: 1px solid transparent;
   cursor: pointer;
+  background: rgba(255, 255, 255, 0.04);
+  letter-spacing: -0.01em;
 }
 
 .nav-link:hover {
+  transform: translateY(-1px);
+}
+
+/* 1. About - Indigo / Lavender */
+.nav-pill-about {
+  background: rgba(99, 102, 241, 0.08);
+  border-color: rgba(99, 102, 241, 0.35);
+  color: #c7d2fe;
+}
+.nav-pill-about:hover, .nav-pill-about.active {
+  background: rgba(99, 102, 241, 0.25);
+  border-color: #818cf8;
   color: #ffffff;
-  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 0 14px rgba(99, 102, 241, 0.4);
 }
 
-.nav-link.active {
+/* 2. AI-CTI Platform - Coral Red */
+.nav-pill-flagship {
+  background: rgba(239, 68, 68, 0.08);
+  border-color: rgba(239, 68, 68, 0.35);
+  color: #fca5a5;
+}
+.nav-pill-flagship:hover, .nav-pill-flagship.active {
+  background: rgba(239, 68, 68, 0.25);
+  border-color: #f87171;
   color: #ffffff;
-  background: rgba(255, 255, 255, 0.1);
-  font-weight: 600;
+  box-shadow: 0 0 14px rgba(239, 68, 68, 0.4);
 }
 
-.nav-btn-primary {
-  padding: 0.35rem 0.85rem;
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.35);
-  border-radius: 999px;
-  color: #34d399;
-  font-weight: 600;
-  margin-left: 0.25rem;
+/* 3. Projects - Electric Cyan */
+.nav-pill-projects {
+  background: rgba(6, 182, 212, 0.08);
+  border-color: rgba(6, 182, 212, 0.35);
+  color: #67e8f9;
+}
+.nav-pill-projects:hover, .nav-pill-projects.active {
+  background: rgba(6, 182, 212, 0.25);
+  border-color: #22d3ee;
+  color: #ffffff;
+  box-shadow: 0 0 14px rgba(6, 182, 212, 0.4);
 }
 
-.nav-btn-primary:hover {
+/* 4. Skills & Tools - Amber / Gold */
+.nav-pill-skills {
+  background: rgba(245, 158, 11, 0.08);
+  border-color: rgba(245, 158, 11, 0.35);
+  color: #fde68a;
+}
+.nav-pill-skills:hover, .nav-pill-skills.active {
+  background: rgba(245, 158, 11, 0.25);
+  border-color: #fbbf24;
+  color: #ffffff;
+  box-shadow: 0 0 14px rgba(245, 158, 11, 0.4);
+}
+
+/* 5. Certifications - Purple / Violet */
+.nav-pill-certs {
+  background: rgba(168, 85, 247, 0.08);
+  border-color: rgba(168, 85, 247, 0.35);
+  color: #e9d5ff;
+}
+.nav-pill-certs:hover, .nav-pill-certs.active {
+  background: rgba(168, 85, 247, 0.25);
+  border-color: #c084fc;
+  color: #ffffff;
+  box-shadow: 0 0 14px rgba(168, 85, 247, 0.4);
+}
+
+/* 6. Milestones - Sky Blue */
+.nav-pill-milestones {
+  background: rgba(14, 165, 233, 0.08);
+  border-color: rgba(14, 165, 233, 0.35);
+  color: #bae6fd;
+}
+.nav-pill-milestones:hover, .nav-pill-milestones.active {
+  background: rgba(14, 165, 233, 0.25);
+  border-color: #38bdf8;
+  color: #ffffff;
+  box-shadow: 0 0 14px rgba(14, 165, 233, 0.4);
+}
+
+/* 7. Endorsements - Rose / Magenta */
+.nav-pill-endorsements {
+  background: rgba(244, 63, 94, 0.08);
+  border-color: rgba(244, 63, 94, 0.35);
+  color: #fecdd3;
+}
+.nav-pill-endorsements:hover, .nav-pill-endorsements.active {
+  background: rgba(244, 63, 94, 0.25);
+  border-color: #fb7185;
+  color: #ffffff;
+  box-shadow: 0 0 14px rgba(244, 63, 94, 0.4);
+}
+
+/* 8. Contact - Emerald Green */
+.nav-pill-contact {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: #a7f3d0;
+}
+.nav-pill-contact:hover, .nav-pill-contact.active {
   background: rgba(16, 185, 129, 0.25);
   border-color: #34d399;
   color: #ffffff;
-  box-shadow: 0 0 12px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.4);
 }
 
 .nav-resume-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.4rem 0.95rem;
+  padding: 0.36rem 0.95rem;
   background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
   border: none;
   border-radius: 999px;
   color: #03121b;
   font-family: var(--font-heading);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
   cursor: pointer;
   transition: all var(--transition-fast);
   box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
-  margin-left: 0.35rem;
+  margin-left: 0.2rem;
 }
 
 .nav-resume-btn:hover {
