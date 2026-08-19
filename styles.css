@@ -257,7 +257,14 @@ body {
   justify-content: center;
   pointer-events: none;
   padding: 0 1.25rem;
-  transition: all var(--transition-normal);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.site-header.header-hidden {
+  transform: translateY(-140%);
+  opacity: 0;
 }
 
 .header-container {

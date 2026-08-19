@@ -783,6 +783,7 @@ function initContactForm() {
    8. NAVIGATION & SMOOTH SCROLLING
    ========================================================================== */
 function initNavigation() {
+  const navbar = document.getElementById('navbar');
   const mobileToggle = document.getElementById('mobileToggle');
   const navMenu = document.getElementById('navMenu');
   const navAnchorLinks = document.querySelectorAll('a.nav-link');
@@ -802,12 +803,43 @@ function initNavigation() {
     });
   }
 
-  // Active link on scroll
+  // Smart Auto-Hide on Scroll Down & Reveal on Scroll Up
+  let lastScrollTop = 0;
+  const scrollThreshold = 8;
+
   window.addEventListener('scroll', () => {
+    const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    // Header Scrolled styling
+    if (navbar) {
+      if (currentScrollTop > 30) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+
+      // Hide on scroll down, show on scroll up
+      if (Math.abs(currentScrollTop - lastScrollTop) > scrollThreshold) {
+        if (currentScrollTop > lastScrollTop && currentScrollTop > 80) {
+          // Scrolling Down -> Hide Header
+          navbar.classList.add('header-hidden');
+          if (navMenu && navMenu.classList.contains('open')) {
+            navMenu.classList.remove('open');
+            if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
+          }
+        } else {
+          // Scrolling Up or Near Top -> Reveal Header
+          navbar.classList.remove('header-hidden');
+        }
+        lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+      }
+    }
+
+    // Active link highlighting on scroll
     let current = '';
     sections.forEach((section) => {
-      const sectionTop = section.offsetTop - 120;
-      if (window.pageYOffset >= sectionTop) {
+      const sectionTop = section.offsetTop - 140;
+      if (currentScrollTop >= sectionTop) {
         current = section.getAttribute('id');
       }
     });
@@ -818,7 +850,7 @@ function initNavigation() {
         link.classList.add('active');
       }
     });
-  });
+  }, { passive: true });
 }
 
 /* ==========================================================================
