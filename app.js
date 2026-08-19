@@ -226,6 +226,37 @@ function initTerminal() {
       </div>
     `,
 
+    mentor: () => `
+      <div class="output-text">
+        🤝 <strong>Project Mentor & Industry Guide:</strong><br/>
+        • <strong>Name:</strong> Mr. Madan Mohan<br/>
+        • <strong>Role:</strong> Project Mentor & Industry Guide<br/>
+        • <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/madanmohan-reyansh/" target="_blank" style="color:#06b6d4;text-decoration:underline;">linkedin.com/in/madanmohan-reyansh</a><br/>
+        • <strong>Focus:</strong> Architecture review across cybersecurity, threat intelligence, and hardware IoT systems.<br/>
+        <a href="#endorsements" style="color:#10b981;text-decoration:underline;">[View in Endorsements Section]</a>
+      </div>
+    `,
+
+    mentors: () => `
+      <div class="output-text">
+        🤝 <strong>Project Mentor & Industry Guide:</strong><br/>
+        • <strong>Name:</strong> Mr. Madan Mohan<br/>
+        • <strong>Role:</strong> Project Mentor & Industry Guide<br/>
+        • <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/madanmohan-reyansh/" target="_blank" style="color:#06b6d4;text-decoration:underline;">linkedin.com/in/madanmohan-reyansh</a><br/>
+        • <strong>Focus:</strong> Architecture review across cybersecurity, threat intelligence, and hardware IoT systems.<br/>
+        <a href="#endorsements" style="color:#10b981;text-decoration:underline;">[View in Endorsements Section]</a>
+      </div>
+    `,
+
+    references: () => `
+      <div class="output-text">
+        🤝 <strong>Mentorship & Professional Endorsements:</strong><br/>
+        1. <strong>Mr. Madan Mohan</strong> — Project Mentor & Industry Guide (<a href="https://www.linkedin.com/in/madanmohan-reyansh/" target="_blank" style="color:#06b6d4;">LinkedIn</a>)<br/>
+        2. <strong>Technical Lead & Supervisor</strong> — CODTECH IT Solutions (Cybersecurity)<br/>
+        3. <strong>SIH Technical Mentor</strong> — National Finalist Evaluation Panel (IIT Kharagpur)
+      </div>
+    `,
+
     contact: () => `
       <div class="output-text">
         📬 <strong>Direct Channels:</strong><br/>
@@ -1037,6 +1068,10 @@ function initAIChatbot() {
 
     if (q.includes('password') || q.includes('vault') || q.includes('crypto')) {
       return `🔒 **Zero-Knowledge Cryptographic Password Vault:**\nA high-security credential vault featuring **AES-256 GCM** authenticated encryption, **PBKDF2-HMAC-SHA512** key derivation with 600,000 iterations, and memory buffer sanitization to prevent memory dumping and offline brute force.`;
+    }
+
+    if (q.includes('mentor') || q.includes('madan') || q.includes('mohan') || q.includes('guide') || q.includes('endorse')) {
+      return `🤝 **Akeel's Project Mentor & Industry Guide:**\n\n• **Mentor:** **Mr. Madan Mohan**\n• **LinkedIn:** [linkedin.com/in/madanmohan-reyansh](https://www.linkedin.com/in/madanmohan-reyansh/)\n• **Guidance:** Architectural review and engineering direction across cybersecurity threat intelligence, hardware IoT sensor integration, and secure systems design.`;
     }
 
     return `👋 I am **Akeel AI**, assistant for **Akeel Ahmad Peerzada**.\n\nAkeel is a Cybersecurity Analyst and B.E. Computer Science Scholar specialized in:\n• **AI-CTI** (14-page Threat Intelligence SecOps suite)\n• **Hardware Security** (SIH 2025 Finalist at IIT Kharagpur with ESP32 & Arduino)\n• **Applied Cryptography** (AES-256 GCM & Zero-Knowledge vaults)\n• **Verified Certifications** (Deloitte, TATA, Intel, Univ of Maryland)\n\nAsk me anything about his projects, skills, certifications, or how to contact him!`;

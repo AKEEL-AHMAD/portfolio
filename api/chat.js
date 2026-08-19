@@ -59,6 +59,10 @@ Builds cybersecurity and IoT systems using Python, Linux, Wireshark, and Nmap to
 • Introduction to Cybersecurity Essentials & Ethical Hacking Principles
 • Python Data Structures & Algorithms
 
+=== MENTORSHIP & INDUSTRY GUIDES ===
+• Project Mentor: Mr. Madan Mohan (Project Mentor & Industry Guide — https://www.linkedin.com/in/madanmohan-reyansh/)
+  Guidance provided on cybersecurity threat intelligence architectures, hardware IoT sensor integration, and engineering methodologies.
+
 === WORK EXPERIENCE & ATHLETICS ===
 • CODTECH IT Solutions Pvt. Ltd. (Cyber Security & Ethical Hacking Intern): Reconnaissance, Nmap port scanning, vulnerability assessments, exploit vector verifications, and technical mitigation reporting.
 • State-Level Cricket Representative: Competitive athletics developing high-pressure composure, leadership, and discipline.
@@ -110,6 +114,10 @@ function generateContextualReply(query) {
 
   if (q.includes('password') || q.includes('vault') || q.includes('crypto')) {
     return `🔒 **Zero-Knowledge Cryptographic Password Vault:**\nA high-security credential vault featuring **AES-256 GCM** authenticated encryption, **PBKDF2-HMAC-SHA512** key derivation with 600,000 iterations, and memory buffer sanitization to prevent memory dumping and offline brute force.`;
+  }
+
+  if (q.includes('mentor') || q.includes('madan') || q.includes('mohan') || q.includes('guide') || q.includes('endorse')) {
+    return `🤝 **Akeel's Project Mentor & Industry Guide:**\n\n• **Mentor:** **Mr. Madan Mohan**\n• **LinkedIn Profile:** [linkedin.com/in/madanmohan-reyansh](https://www.linkedin.com/in/madanmohan-reyansh/)\n• **Guidance:** Provided technical mentoring and architectural review across cybersecurity threat intelligence, hardware IoT sensor integration, and secure systems design.`;
   }
 
   return `👋 I am **Akeel AI**, assistant for **Akeel Ahmad Peerzada**.\n\nAkeel is a Cybersecurity Analyst and B.E. Computer Science Scholar specialized in:\n• **AI-CTI** (14-page Threat Intelligence SecOps suite)\n• **Hardware Security** (SIH 2025 Finalist at IIT Kharagpur with ESP32 & Arduino)\n• **Applied Cryptography** (AES-256 GCM & Zero-Knowledge vaults)\n• **Verified Certifications** (Deloitte, TATA, Intel, Univ of Maryland)\n\nAsk me anything about his projects, skills, certifications, or how to contact him!`;
