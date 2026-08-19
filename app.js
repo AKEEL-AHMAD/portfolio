@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initNavigation();
   initCopyUtilities();
+  initAIChatbot();
 });
 
 /* ==========================================================================
@@ -835,3 +836,210 @@ function escapeHtml(str) {
     }[tag] || tag)
   );
 }
+
+/* ==========================================================================
+   10. AKEEL AI CHATBOT ENGINE (API Integration + Local Contextual Engine)
+   ========================================================================== */
+function initAIChatbot() {
+  const toggleBtn = document.getElementById('aiChatToggleBtn');
+  const chatWindow = document.getElementById('aiChatWindow');
+  const closeBtn = document.getElementById('aiCloseChatBtn');
+  const clearBtn = document.getElementById('aiClearChatBtn');
+  const chatForm = document.getElementById('aiChatForm');
+  const chatInput = document.getElementById('aiChatInput');
+  const chatBody = document.getElementById('aiChatBody');
+  const chips = document.querySelectorAll('.ai-chip');
+
+  if (!toggleBtn || !chatWindow || !chatForm || !chatInput || !chatBody) return;
+
+  function toggleChat() {
+    const isOpen = chatWindow.classList.toggle('open');
+    toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    chatWindow.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+    if (isOpen) {
+      setTimeout(() => chatInput.focus(), 150);
+    }
+  }
+
+  function closeChat() {
+    chatWindow.classList.remove('open');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    chatWindow.setAttribute('aria-hidden', 'true');
+  }
+
+  toggleBtn.addEventListener('click', toggleChat);
+  if (closeBtn) closeBtn.addEventListener('click', closeChat);
+
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      chatBody.innerHTML = `
+        <div class="chat-msg bot-msg">
+          <div class="msg-avatar">🤖</div>
+          <div class="msg-bubble">
+            Chat cleared. How else can I help you regarding Akeel's projects, skills, or experience?
+          </div>
+        </div>
+      `;
+    });
+  }
+
+  // Quick Chips
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const question = chip.getAttribute('data-question');
+      if (question) {
+        chatInput.value = question;
+        handleSendMessage(question);
+      }
+    });
+  });
+
+  chatForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const query = chatInput.value.trim();
+    if (!query) return;
+    handleSendMessage(query);
+  });
+
+  async function handleSendMessage(message) {
+    chatInput.value = '';
+
+    // Append User Message
+    appendMessage(message, 'user');
+
+    // Show Typing Indicator
+    const typingElem = showTypingIndicator();
+
+    try {
+      // 1. Try sending to Backend API (/api/chat)
+      let replyText = '';
+      try {
+        const response = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message })
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          if (data && data.reply) {
+            replyText = data.reply;
+          }
+        }
+      } catch (netErr) {
+        // Static deploy fallback
+      }
+
+      // 2. If API not available (e.g. static hosting on Netlify/GitHub/Surge), use Instant Intelligent Engine
+      if (!replyText) {
+        await new Promise((res) => setTimeout(res, 500)); // Natural response delay
+        replyText = getLocalContextualReply(message);
+      }
+
+      // Remove typing indicator & Append Bot Reply
+      typingElem.remove();
+      appendMessage(replyText, 'bot');
+
+    } catch (err) {
+      typingElem.remove();
+      appendMessage("I am currently operating in offline mode. Please feel free to reach out directly to Akeel at peerakeel9027@gmail.com or +91 6006889027.", 'bot');
+    }
+  }
+
+  function appendMessage(text, sender) {
+    const msgDiv = document.createElement('div');
+    msgDiv.className = `chat-msg ${sender}-msg`;
+
+    const avatar = sender === 'bot' ? '🤖' : '👤';
+    const formattedHtml = formatChatMarkdown(text);
+
+    msgDiv.innerHTML = `
+      <div class="msg-avatar">${avatar}</div>
+      <div class="msg-bubble">${formattedHtml}</div>
+    `;
+
+    chatBody.appendChild(msgDiv);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function showTypingIndicator() {
+    const typingDiv = document.createElement('div');
+    typingDiv.className = 'chat-msg bot-msg';
+    typingDiv.innerHTML = `
+      <div class="msg-avatar">🤖</div>
+      <div class="msg-bubble typing-bubble">
+        <span class="typing-dot"></span>
+        <span class="typing-dot"></span>
+        <span class="typing-dot"></span>
+      </div>
+    `;
+    chatBody.appendChild(typingDiv);
+    chatBody.scrollTop = chatBody.scrollHeight;
+    return typingDiv;
+  }
+
+  function formatChatMarkdown(txt) {
+    let out = escapeHtml(txt);
+    // Bold: **text**
+    out = out.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    // Bullet points: • or \n•
+    out = out.replace(/\n• /g, '<br/>• ');
+    out = out.replace(/\n\n/g, '<br/><br/>');
+    out = out.replace(/\n/g, '<br/>');
+    // Markdown links: [text](url)
+    out = out.replace(/\[(.*?)\]\((https?:\/\/.*?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+    // Direct URLs
+    out = out.replace(/(https?:\/\/[^\s<]+)/g, (match) => {
+      if (out.includes(`href="${match}"`)) return match;
+      return `<a href="${match}" target="_blank" rel="noopener noreferrer">${match}</a>`;
+    });
+    return out;
+  }
+
+  function getLocalContextualReply(query) {
+    const q = query.toLowerCase();
+
+    if (q.includes('ai-cti') || q.includes('flagship') || q.includes('threat intel') || q.includes('secops')) {
+      return `🔥 **AI-CTI** is Akeel's flagship full-stack Security Operations suite spanning **14 pages**.\n\n• **Frontend:** React + Tailwind (Deployed on Vercel)\n• **Backend:** Node.js + Express + SQLite (Deployed on Render)\n• **Security:** Real JWT authentication with Role-Based Access Control (RBAC), rate limiting (50 req/min), and account lockout.\n• **Threat Feeds:** Live integrations with VirusTotal, AbuseIPDB, and AlienVault OTX APIs.\n• **DevOps:** 13 automated CI tests executed on push with automated DB backups.\n\nGitHub repo: https://github.com/AKEEL-AHMAD/ai-cti`;
+    }
+
+    if (q.includes('sih') || q.includes('gold') || q.includes('hackathon') || q.includes('kharagpur') || q.includes('hardware') || q.includes('fire assay')) {
+      return `🏆 **Smart India Hackathon 2025 National Finalist (IIT Kharagpur)**:\n\nAkeel built a **Non-Destructive Alternative to Traditional Fire Assay for Gold Testing** using ESP32 and Arduino UNO.\n\nInstead of destroying jewelry by melting it (cupellation), his system combines **hydrostatic Archimedes density validation** with **eddy current electromagnetic response** to evaluate purity with 100% sample integrity.`;
+    }
+
+    if (q.includes('skill') || q.includes('tool') || q.includes('python') || q.includes('nmap') || q.includes('linux') || q.includes('tech') || q.includes('wireshark')) {
+      return `🛡️ **Akeel's Core Technical Skills:**\n\n• **Cybersecurity:** Ethical Hacking, Threat Hunting, MITRE ATT&CK Matrix, Reconnaissance & Port Scanning (Nmap), Wireshark Traffic Analysis, Vulnerability Assessment, OWASP Top 10, Applied Cryptography (AES-256 GCM, PBKDF2), JWT & RBAC.\n• **Languages:** Python (Primary), Node.js, Express, React, SQL/SQLite, HTML5/CSS, C/C++.\n• **Hardware & IoT:** ESP32, Arduino UNO, Sensor Array Interfacing (I2C/SPI/UART), Non-Destructive Physical Testing.\n• **DevOps & Cloud:** Automated CI/CD (13+ Tests), Vercel, Render, Git/GitHub.`;
+    }
+
+    if (q.includes('cert') || q.includes('deloitte') || q.includes('tata') || q.includes('intel') || q.includes('maryland')) {
+      return `📜 **Verified Industry Certifications:**\n\n1. **Cyber Simulation** — Deloitte\n2. **Cybersecurity Analyst** — TATA\n3. **Cybersecurity for Everyone** — University of Maryland\n4. **AI for Entrepreneurship & AI for All** — Intel\n5. **Introduction to Cybersecurity Essentials**\n6. **Ethical Hacking Principles**\n7. **Python Data Structures & Algorithms**`;
+    }
+
+    if (q.includes('education') || q.includes('college') || q.includes('degree') || q.includes('cgpa') || q.includes('anna university')) {
+      return `🎓 **Educational Background:**\n\n• **B.Tech / B.E. in Computer Science & Engineering (2024–2027)**\n  Nehru Institute of Engineering and Technology (Anna University) • **CGPA: 7.56**\n• **Diploma in Computer Engineering (2020–2023)**\n  Government Polytechnic College Gogji Bagh Srinagar (BOTE) • **CGPA: 7.0**\n• **10th Matriculation (2018–2019)**\n  Jamia Islamia Waripora Handwara (JKBOSE) • **63%**`;
+    }
+
+    if (q.includes('contact') || q.includes('email') || q.includes('phone') || q.includes('hire') || q.includes('reach') || q.includes('linkedin') || q.includes('call')) {
+      return `📬 **Get in Touch with Akeel Ahmad Peerzada:**\n\n• **Email:** [peerakeel9027@gmail.com](mailto:peerakeel9027@gmail.com)\n• **Phone:** [+91 6006889027](tel:+916006889027)\n• **LinkedIn:** [linkedin.com/in/akeel-ahmad-peerzada-59a942333](https://www.linkedin.com/in/akeel-ahmad-peerzada-59a942333/)\n• **GitHub:** [github.com/AKEEL-AHMAD](https://github.com/AKEEL-AHMAD)\n• **Location:** Jammu & Kashmir, India (Open to Relocation & Remote roles)`;
+    }
+
+    if (q.includes('cricket') || q.includes('sports')) {
+      return `🏏 **State-Level Cricket Background:**\nAkeel represented state teams in competitive cricket leagues. The rigor of high-stakes sports developed his tactical composure, strategic thinking, and ability to execute under intense pressure.`;
+    }
+
+    if (q.includes('internship') || q.includes('codtech') || q.includes('experience')) {
+      return `💼 **Cyber Security & Ethical Hacking Intern at CODTECH IT Solutions Pvt. Ltd.:**\nConducted reconnaissance, network scanning with Nmap, vulnerability assessments, exploit vector verifications, and professional security mitigation reporting.`;
+    }
+
+    if (q.includes('health') || q.includes('water') || q.includes('mini project')) {
+      return `💡 **Smart Community Health Monitoring & Early Warning System (Mini Project):**\nDeveloped in Coimbatore (2024–2025). An integrated surveillance system correlating water telemetry IoT sensors (pH, turbidity, dissolved oxygen) with symptom logs to forecast water-borne epidemics and dispatch automated early quarantine warnings.`;
+    }
+
+    if (q.includes('password') || q.includes('vault') || q.includes('crypto')) {
+      return `🔒 **Zero-Knowledge Cryptographic Password Vault:**\nA high-security credential vault featuring **AES-256 GCM** authenticated encryption, **PBKDF2-HMAC-SHA512** key derivation with 600,000 iterations, and memory buffer sanitization to prevent memory dumping and offline brute force.`;
+    }
+
+    return `👋 I am **Akeel AI**, assistant for **Akeel Ahmad Peerzada**.\n\nAkeel is a Cybersecurity Analyst and B.E. Computer Science Scholar specialized in:\n• **AI-CTI** (14-page Threat Intelligence SecOps suite)\n• **Hardware Security** (SIH 2025 Finalist at IIT Kharagpur with ESP32 & Arduino)\n• **Applied Cryptography** (AES-256 GCM & Zero-Knowledge vaults)\n• **Verified Certifications** (Deloitte, TATA, Intel, Univ of Maryland)\n\nAsk me anything about his projects, skills, certifications, or how to contact him!`;
+  }
+}
+

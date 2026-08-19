@@ -1282,6 +1282,62 @@
     </div>
   </div>
 
+  <!-- FLOATING AI CHATBOT WIDGET -->
+  <div class="ai-chatbot-widget" id="aiChatbotWidget">
+    <!-- Chatbot Toggle Launcher Button -->
+    <button class="ai-chat-toggle-btn" id="aiChatToggleBtn" aria-label="Open Akeel AI Chatbot" aria-expanded="false" title="Chat with Akeel AI">
+      <span class="bot-icon">🤖</span>
+      <span class="bot-label">Ask Akeel AI</span>
+      <span class="bot-pulse"></span>
+    </button>
+
+    <!-- Chat Window Container -->
+    <div class="ai-chat-window" id="aiChatWindow" aria-hidden="true">
+      <div class="ai-chat-header">
+        <div class="ai-header-info">
+          <div class="ai-avatar">🤖</div>
+          <div>
+            <h4 class="ai-title">Akeel AI <span class="ai-badge">SecOps Assistant</span></h4>
+            <span class="ai-status"><span class="status-dot"></span> Online • Trained on Akeel's Profile</span>
+          </div>
+        </div>
+        <div class="ai-header-controls">
+          <button class="ai-ctrl-btn" id="aiClearChatBtn" title="Clear Chat History">🧹</button>
+          <button class="ai-ctrl-btn" id="aiCloseChatBtn" title="Minimize Chat">✕</button>
+        </div>
+      </div>
+
+      <!-- Scrollable Message Body -->
+      <div class="ai-chat-body" id="aiChatBody">
+        <div class="chat-msg bot-msg">
+          <div class="msg-avatar">🤖</div>
+          <div class="msg-bubble">
+            Hi! I am <strong>Akeel AI</strong>, an intelligent assistant trained on Akeel Ahmad Peerzada's background, cybersecurity projects, certifications, and skills. How can I help you?
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Suggestion Chips -->
+      <div class="ai-chat-chips" id="aiChatChips">
+        <button class="ai-chip" data-question="Tell me about his AI-CTI Flagship project">🔥 AI-CTI Platform</button>
+        <button class="ai-chip" data-question="Tell me about his SIH 2025 project at IIT Kharagpur">🏆 SIH 2025 Gold Assay</button>
+        <button class="ai-chip" data-question="What are Akeel's technical skills and tools?">🛡️ Skills & Tools</button>
+        <button class="ai-chip" data-question="What industry certifications does he hold?">📜 Certifications</button>
+        <button class="ai-chip" data-question="How can I contact or hire Akeel?">📬 Contact / Hire</button>
+      </div>
+
+      <!-- Chat Input Form -->
+      <form class="ai-chat-input-bar" id="aiChatForm" autocomplete="off">
+        <input type="text" id="aiChatInput" class="ai-input" placeholder="Ask about projects, skills, contact..." required />
+        <button type="submit" class="ai-send-btn" id="aiSendBtn" aria-label="Send message">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
   <!-- TOAST NOTIFICATION CONTAINER -->
   <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
 
