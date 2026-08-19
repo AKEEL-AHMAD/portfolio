@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Community Health Monitoring & Early Warning System | Akeel Ahmad Peerzada</title>
+  <meta name="description" content="AI-driven predictive surveillance dashboard for water-borne diseases and IoT water quality telemetry developed by Akeel Ahmad Peerzada in Coimbatore.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #060b14;
+      --bg-card: #0e172a;
+      --border-color: #1e293b;
+      --emerald: #10b981;
+      --cyan: #06b6d4;
+      --amber: #f59e0b;
+      --red: #ef4444;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --font-heading: 'Space Grotesk', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: rgba(14, 23, 42, 0.9);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(12px);
+    }
+
+    .brand {
+      font-family: var(--font-mono);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--cyan);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-back {
+      color: var(--emerald);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0.8rem;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .nav-back:hover {
+      background: rgba(16, 185, 129, 0.1);
+      border-color: var(--emerald);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+      flex: 1;
+      width: 100%;
+    }
+
+    .hero-kicker {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    h1 {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      margin-bottom: 0.75rem;
+      color: #ffffff;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      max-width: 800px;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.75rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .card-title {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding-bottom: 0.75rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      margin-bottom: 0.5rem;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      height: 6px;
+      background: #1e293b;
+      border-radius: 4px;
+      outline: none;
+      accent-color: var(--cyan);
+    }
+
+    .range-val {
+      float: right;
+      color: var(--cyan);
+      font-weight: 700;
+    }
+
+    .preset-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .preset-btn {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border-color);
+      color: #e2e8f0;
+      padding: 0.4rem 0.8rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .preset-btn:hover {
+      background: rgba(6, 182, 212, 0.15);
+      border-color: var(--cyan);
+      color: #fff;
+    }
+
+    .btn-run {
+      width: 100%;
+      background: linear-gradient(135deg, var(--cyan), #0284c7);
+      color: #ffffff;
+      border: none;
+      padding: 0.85rem;
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+    }
+
+    .btn-run:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(6, 182, 212, 0.5);
+    }
+
+    .gauge-box {
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(0,0,0,0.3);
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .risk-score {
+      font-size: 3rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      color: var(--emerald);
+    }
+
+    .status-badge {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid var(--emerald);
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: #86efac;
+    }
+
+    .recommendations-list {
+      list-style: none;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+
+    .recommendations-list li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .recommendations-list li::before {
+      content: '👉';
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="../../index.html" class="brand">
+      <span>[HEALTH-AI]</span>
+      <span style="color:#fff;">Smart Community Health & Early Warning Dashboard</span>
+    </a>
+    <a href="../../index.html" class="nav-back">← Back to Portfolio</a>
+  </header>
+
+  <main class="container">
+    <div class="hero-kicker">💡 Coimbatore Municipal Surveillance Project</div>
+    <h1>AI-Driven Water Quality Telemetry & Epidemic Forecasting System</h1>
+    <p class="subtitle">
+      Monitors multi-node IoT sensor telemetry across municipal water reservoirs (pH, Turbidity, Dissolved Oxygen, Coliforms) and uses machine learning models to forecast water-borne outbreak risks before contamination spreads.
+    </p>
+
+    <div class="grid">
+      <!-- Input Controls -->
+      <div class="card">
+        <h3 class="card-title">🚰 IoT Water Sensor Telemetry Feeds</h3>
+
+        <label>Simulate Reservoir Scenarios:</label>
+        <div class="preset-btns">
+          <button class="preset-btn" onclick="applyPreset(7.2, 2.5, 6.8, 10, 1)">Optimal Tap Water (Safe)</button>
+          <button class="preset-btn" onclick="applyPreset(6.4, 9.5, 4.2, 85, 8)">Post-Rain Contamination (Moderate)</button>
+          <button class="preset-btn" onclick="applyPreset(5.8, 22.0, 2.5, 340, 24)" style="border-color:#ef4444; color:#fca5a5;">🚨 Cholera/E.Coli Outbreak (Critical)</button>
+        </div>
+
+        <div class="form-group">
+          <label>Water pH Level: <span class="range-val" id="valPH">7.20</span></label>
+          <input type="range" id="inputPH" min="4.0" max="10.0" step="0.1" value="7.2" oninput="updateValues()">
+        </div>
+
+        <div class="form-group">
+          <label>Turbidity (NTU): <span class="range-val" id="valTurb">2.5 NTU</span></label>
+          <input type="range" id="inputTurb" min="0.5" max="30.0" step="0.5" value="2.5" oninput="updateValues()">
+        </div>
+
+        <div class="form-group">
+          <label>Dissolved Oxygen (mg/L): <span class="range-val" id="valDO">6.8 mg/L</span></label>
+          <input type="range" id="inputDO" min="1.0" max="10.0" step="0.2" value="6.8" oninput="updateValues()">
+        </div>
+
+        <div class="form-group">
+          <label>Coliform Bacteria Count (CFU/100mL): <span class="range-val" id="valBact">10 CFU</span></label>
+          <input type="range" id="inputBact" min="0" max="500" step="5" value="10" oninput="updateValues()">
+        </div>
+
+        <div class="form-group">
+          <label>Reported Symptom Incidents in Zone: <span class="range-val" id="valCases">1 Cases</span></label>
+          <input type="range" id="inputCases" min="0" max="40" step="1" value="1" oninput="updateValues()">
+        </div>
+
+        <button class="btn-run" onclick="runEpidemicPrediction()">📡 Run AI Epidemic Prediction Model</button>
+      </div>
+
+      <!-- Live Predictions Output -->
+      <div class="card">
+        <h3 class="card-title">🤖 Predictive Risk Scoring & Health Protocol</h3>
+
+        <div class="gauge-box">
+          <div class="risk-score" id="displayRisk">10%</div>
+          <div class="status-badge" id="displayStatus">✅ SAFE: OPTIMAL WATER QUALITY</div>
+        </div>
+
+        <h4 style="font-family:var(--font-mono); font-size:0.9rem; margin-bottom:0.75rem; color:#cbd5e1;">AUTOMATED PUBLIC HEALTH ACTION PROTOCOL:</h4>
+        <ul class="recommendations-list" id="displayRecommendations">
+          <li>Water parameters well within WHO & BIS potable drinking standards.</li>
+          <li>Continuous IoT sensor telemetry streaming active across Coimbatore monitoring grid.</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function updateValues() {
+      const ph = parseFloat(document.getElementById('inputPH').value);
+      const turb = parseFloat(document.getElementById('inputTurb').value);
+      const doVal = parseFloat(document.getElementById('inputDO').value);
+      const bact = parseInt(document.getElementById('inputBact').value);
+      const cases = parseInt(document.getElementById('inputCases').value);
+
+      document.getElementById('valPH').innerText = ph.toFixed(2);
+      document.getElementById('valTurb').innerText = turb.toFixed(1) + ' NTU';
+      document.getElementById('valDO').innerText = doVal.toFixed(1) + ' mg/L';
+      document.getElementById('valBact').innerText = bact + ' CFU';
+      document.getElementById('valCases').innerText = cases + ' Cases';
+    }
+
+    function applyPreset(ph, turb, doVal, bact, cases) {
+      document.getElementById('inputPH').value = ph;
+      document.getElementById('inputTurb').value = turb;
+      document.getElementById('inputDO').value = doVal;
+      document.getElementById('inputBact').value = bact;
+      document.getElementById('inputCases').value = cases;
+      updateValues();
+      runEpidemicPrediction();
+    }
+
+    async function runEpidemicPrediction() {
+      const pH = parseFloat(document.getElementById('inputPH').value);
+      const turbidity = parseFloat(document.getElementById('inputTurb').value);
+      const dissolvedOxygen = parseFloat(document.getElementById('inputDO').value);
+      const bacteriaCount = parseInt(document.getElementById('inputBact').value);
+      const activeCases = parseInt(document.getElementById('inputCases').value);
+
+      try {
+        const response = await fetch('/api/health-predict', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ pH, turbidity, dissolvedOxygen, bacteriaCount, activeCases })
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          if (data && data.analysis) {
+            const a = data.analysis;
+            document.getElementById('displayRisk').innerText = a.riskScore;
+            document.getElementById('displayRisk').style.color = a.alertColor;
+            document.getElementById('displayStatus').innerText = a.statusLevel;
+            document.getElementById('displayStatus').style.borderColor = a.alertColor;
+            document.getElementById('displayStatus').style.color = a.alertColor;
+
+            const recList = document.getElementById('displayRecommendations');
+            recList.innerHTML = '';
+            a.recommendations.forEach(r => {
+              const li = document.createElement('li');
+              li.innerText = r;
+              recList.appendChild(li);
+            });
+            return;
+          }
+        }
+      } catch (err) {
+        // Fallback
+      }
+
+      // Local fallback heuristic
+      let risk = 10;
+      if (pH < 6.5 || pH > 8.5) risk += 25;
+      if (turbidity > 10) risk += 30;
+      if (dissolvedOxygen < 4.0) risk += 20;
+      if (bacteriaCount > 100) risk += 35;
+      if (activeCases > 10) risk += 20;
+
+      risk = Math.min(risk, 98);
+      document.getElementById('displayRisk').innerText = risk + '%';
+      if (risk >= 70) {
+        document.getElementById('displayRisk').style.color = '#ef4444';
+        document.getElementById('displayStatus').innerText = '🚨 CRITICAL OUTBREAK RISK';
+        document.getElementById('displayRecommendations').innerHTML = '<li>Immediate municipal water pipeline isolation triggered.</li><li>Emergency SMS broadcast sent to residential zone.</li>';
+      } else {
+        document.getElementById('displayRisk').style.color = '#10b981';
+        document.getElementById('displayStatus').innerText = '✅ SAFE: POTABLE WATER';
+        document.getElementById('displayRecommendations').innerHTML = '<li>Water parameters within standard health margins.</li>';
+      }
+    }
+
+    // Initial run
+    runEpidemicPrediction();
+  </script>
+</body>
+</html>

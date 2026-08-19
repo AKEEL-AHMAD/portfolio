@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIH 2025 — Non-Destructive Gold Fire Assay Hardware Simulator | Akeel Ahmad Peerzada</title>
+  <meta name="description" content="Smart India Hackathon 2025 National Finalist Innovation at IIT Kharagpur by Akeel Ahmad Peerzada. Non-destructive gold purity evaluation using ESP32, Archimedes Hydrostatic density, and Eddy Current electromagnetics.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #040810;
+      --bg-card: #0c1424;
+      --border-color: #1e293b;
+      --emerald: #10b981;
+      --cyan: #06b6d4;
+      --gold: #f59e0b;
+      --red: #ef4444;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --font-heading: 'Space Grotesk', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: rgba(12, 20, 36, 0.9);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(12px);
+    }
+
+    .brand {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--emerald);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-back {
+      color: var(--cyan);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0.8rem;
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .nav-back:hover {
+      background: rgba(6, 182, 212, 0.1);
+      border-color: var(--cyan);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+      flex: 1;
+      width: 100%;
+    }
+
+    .hero-kicker {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    h1 {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      margin-bottom: 0.75rem;
+      color: #ffffff;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      max-width: 800px;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.75rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .card-title {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding-bottom: 0.75rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      margin-bottom: 0.5rem;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      height: 6px;
+      background: #1e293b;
+      border-radius: 4px;
+      outline: none;
+      accent-color: var(--emerald);
+    }
+
+    .range-val {
+      float: right;
+      color: var(--cyan);
+      font-weight: 700;
+    }
+
+    .preset-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .preset-btn {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border-color);
+      color: #e2e8f0;
+      padding: 0.4rem 0.8rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .preset-btn:hover {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: var(--emerald);
+      color: #fff;
+    }
+
+    .btn-run {
+      width: 100%;
+      background: linear-gradient(135deg, var(--emerald), #059669);
+      color: #041a10;
+      border: none;
+      padding: 0.85rem;
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    }
+
+    .btn-run:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+    }
+
+    .gauge-box {
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(0,0,0,0.3);
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .purity-badge {
+      font-size: 2.5rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      color: var(--gold);
+    }
+
+    .class-tag {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid var(--gold);
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: #fef08a;
+    }
+
+    .telemetry-table {
+      width: 100%;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      border-collapse: collapse;
+    }
+
+    .telemetry-table td {
+      padding: 0.55rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .telemetry-table td:last-child {
+      text-align: right;
+      color: var(--cyan);
+      font-weight: 600;
+    }
+
+    .notes-box {
+      margin-top: 1rem;
+      padding: 0.85rem;
+      background: rgba(6, 182, 212, 0.08);
+      border-left: 3px solid var(--cyan);
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: #cbd5e1;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="../../index.html" class="brand">
+      <span>[SIH 2025]</span>
+      <span style="color:#fff;">ESP32 Gold Fire Assay Hardware Simulator</span>
+    </a>
+    <a href="../../index.html" class="nav-back">← Back to Portfolio</a>
+  </header>
+
+  <main class="container">
+    <div class="hero-kicker">🏆 Smart India Hackathon 2025 — National Finalist (IIT Kharagpur)</div>
+    <h1>Non-Destructive Alternative to Traditional Fire Assay for Gold Testing</h1>
+    <p class="subtitle">
+      Traditional cupellation / fire assaying burns and destroys gold jewellery samples. This prototype combines <strong>Hydrostatic Archimedes Density Telemetry</strong> and <strong>Eddy Current Electromagnetic Response</strong> via an ESP32 sensor array to evaluate purity without causing any physical damage.
+    </p>
+
+    <div class="grid">
+      <!-- Input Controls -->
+      <div class="card">
+        <h3 class="card-title">🎛️ Testbench Telemetry Controls</h3>
+
+        <label>Quick Sample Presets:</label>
+        <div class="preset-btns">
+          <button class="preset-btn" onclick="applyPreset(20.0, 18.965, 120)">24K Bullion (99.9%)</button>
+          <button class="preset-btn" onclick="applyPreset(15.0, 14.150, 105)">22K Jewellery (91.6%)</button>
+          <button class="preset-btn" onclick="applyPreset(12.0, 11.220, 95)">18K Hallmarked (75.0%)</button>
+          <button class="preset-btn" onclick="applyPreset(20.0, 18.960, 45)" style="border-color:#ef4444; color:#fca5a5;">⚠️ Fake Gold (Tungsten Core)</button>
+        </div>
+
+        <div class="form-group">
+          <label>Sample Mass in Air ($M_{air}$): <span class="range-val" id="valAir">20.00 g</span></label>
+          <input type="range" id="inputAir" min="5" max="50" step="0.1" value="20" oninput="updateValues()">
+        </div>
+
+        <div class="form-group">
+          <label>Sample Mass in Water ($M_{water}$): <span class="range-val" id="valWater">18.96 g</span></label>
+          <input type="range" id="inputWater" min="4" max="48" step="0.01" value="18.96" oninput="updateValues()">
+        </div>
+
+        <div class="form-group">
+          <label>Eddy Current Coil Frequency Response: <span class="range-val" id="valEddy">100 kHz</span></label>
+          <input type="range" id="inputEddy" min="20" max="200" step="1" value="100" oninput="updateValues()">
+        </div>
+
+        <button class="btn-run" onclick="runAssayAnalysis()">⚡ Execute Multi-Sensor Purity Analysis</button>
+      </div>
+
+      <!-- Live Results & Telemetry Output -->
+      <div class="card">
+        <h3 class="card-title">📊 Live Purity & Classification Verdict</h3>
+
+        <div class="gauge-box">
+          <div class="purity-badge" id="displayPurity">99.9%</div>
+          <div class="class-tag" id="displayClass">24K Fine Pure Gold</div>
+        </div>
+
+        <table class="telemetry-table">
+          <tr>
+            <td>Hydrostatic Calculated Density ($\rho$):</td>
+            <td id="resDensity">19.32 g/cm³</td>
+          </tr>
+          <tr>
+            <td>Estimated Karat Value:</td>
+            <td id="resKarat">24K</td>
+          </tr>
+          <tr>
+            <td>Eddy Electromagnetic Response:</td>
+            <td id="resEddy">100 kHz (Optimal Conductivity)</td>
+          </tr>
+          <tr>
+            <td>Physical Sample Integrity:</td>
+            <td style="color:#10b981;">100% NON-DESTRUCTIVE</td>
+          </tr>
+          <tr>
+            <td>Telemetry Server Status:</td>
+            <td id="resStatus" style="color:#34d399;">Active (API Ready)</td>
+          </tr>
+        </table>
+
+        <div class="notes-box" id="displayNotes">
+          Sample meets Bureau of Indian Standards (BIS) Hallmarking criteria for investment-grade fine bullion. Zero surface or structural loss detected.
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function updateValues() {
+      const air = parseFloat(document.getElementById('inputAir').value);
+      let water = parseFloat(document.getElementById('inputWater').value);
+      if (water >= air) {
+        water = air - 0.5;
+        document.getElementById('inputWater').value = water;
+      }
+      const eddy = document.getElementById('inputEddy').value;
+
+      document.getElementById('valAir').innerText = air.toFixed(2) + ' g';
+      document.getElementById('valWater').innerText = water.toFixed(2) + ' g';
+      document.getElementById('valEddy').innerText = eddy + ' kHz';
+    }
+
+    function applyPreset(air, water, eddy) {
+      document.getElementById('inputAir').value = air;
+      document.getElementById('inputWater').value = water;
+      document.getElementById('inputEddy').value = eddy;
+      updateValues();
+      runAssayAnalysis();
+    }
+
+    async function runAssayAnalysis() {
+      const weightAir = parseFloat(document.getElementById('inputAir').value);
+      const weightWater = parseFloat(document.getElementById('inputWater').value);
+      const eddyFrequency = parseFloat(document.getElementById('inputEddy').value);
+
+      document.getElementById('resStatus').innerText = 'Analyzing Telemetry...';
+
+      try {
+        const response = await fetch('/api/gold-assay', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ weightAir, weightWater, eddyFrequency })
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          if (data && data.telemetry) {
+            const t = data.telemetry;
+            document.getElementById('displayPurity').innerText = t.purityPercentage;
+            document.getElementById('displayClass').innerText = t.classification;
+            document.getElementById('resDensity').innerText = t.calculatedDensity;
+            document.getElementById('resKarat').innerText = t.estimatedKarat;
+            document.getElementById('resEddy').innerText = t.eddyCurrentFreq;
+            document.getElementById('displayNotes').innerText = t.notes;
+            document.getElementById('resStatus').innerText = 'Online (/api/gold-assay)';
+
+            if (t.tamperDetected) {
+              document.getElementById('displayPurity').style.color = '#ef4444';
+              document.getElementById('displayClass').style.borderColor = '#ef4444';
+              document.getElementById('displayClass').style.background = 'rgba(239, 68, 68, 0.2)';
+            } else {
+              document.getElementById('displayPurity').style.color = '#f59e0b';
+              document.getElementById('displayClass').style.borderColor = '#f59e0b';
+              document.getElementById('displayClass').style.background = 'rgba(245, 158, 11, 0.15)';
+            }
+            return;
+          }
+        }
+      } catch (err) {
+        // Local client fallback
+      }
+
+      // Local fallback calculation
+      const vol = Math.max(weightAir - weightWater, 0.01);
+      const density = weightAir / vol;
+      let purity = (density / 19.32) * 100;
+      let karat = Math.round((density / 19.32) * 24);
+
+      if (density >= 19.1 && eddyFrequency < 80) {
+        document.getElementById('displayPurity').innerText = '12.5%';
+        document.getElementById('displayPurity').style.color = '#ef4444';
+        document.getElementById('displayClass').innerText = '⚠️ COUNTERFEIT DETECTED (Tungsten Core)';
+        document.getElementById('resKarat').innerText = '0K (Plated)';
+        document.getElementById('displayNotes').innerText = 'Hydrostatic density matches gold (~19.25 g/cm3), but eddy electromagnetic response reveals non-conductive tungsten core.';
+      } else {
+        document.getElementById('displayPurity').innerText = Math.min(purity, 99.9).toFixed(1) + '%';
+        document.getElementById('displayPurity').style.color = '#f59e0b';
+        document.getElementById('displayClass').innerText = karat >= 23 ? '24K Fine Bullion' : `${karat}K Gold Alloy`;
+        document.getElementById('resKarat').innerText = `${karat}K`;
+        document.getElementById('displayNotes').innerText = `Evaluated density: ${density.toFixed(2)} g/cm³. Sample tested non-destructively.`;
+      }
+      document.getElementById('resDensity').innerText = density.toFixed(2) + ' g/cm³';
+      document.getElementById('resEddy').innerText = eddyFrequency + ' kHz';
+      document.getElementById('resStatus').innerText = 'Client Telemetry Engine';
+    }
+
+    // Initial run
+    runAssayAnalysis();
+  </script>
+</body>
+</html>
