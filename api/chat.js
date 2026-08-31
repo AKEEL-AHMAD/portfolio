@@ -52,6 +52,7 @@ Builds cybersecurity and IoT systems using Python, Linux, Wireshark, and Nmap to
    - Scope: AES-256 GCM authenticated encryption, PBKDF2-HMAC-SHA512 key derivation with 600,000 rounds, and memory buffer sanitization to prevent memory dumping.
 
 === CERTIFICATIONS ===
+• IBM Full Stack Software Developer Professional Certificate (In Progress)
 • Cyber Simulation — Deloitte
 • Cybersecurity Analyst — TATA
 • Cybersecurity for Everyone — University of Maryland
@@ -64,13 +65,14 @@ Builds cybersecurity and IoT systems using Python, Linux, Wireshark, and Nmap to
   Guidance provided on cybersecurity threat intelligence architectures, hardware IoT sensor integration, and engineering methodologies.
 
 === WORK EXPERIENCE & ATHLETICS ===
-• CODTECH IT Solutions Pvt. Ltd. (Cyber Security & Ethical Hacking Intern): Reconnaissance, Nmap port scanning, vulnerability assessments, exploit vector verifications, and technical mitigation reporting.
-• State-Level Cricket Representative: Competitive athletics developing high-pressure composure, leadership, and discipline.
+• CODTECH IT Solutions Pvt. Ltd. (Cyber Security & Ethical Hacking Intern, Oct 3 – Nov 3, 2025): Reconnaissance, Nmap port scanning, vulnerability assessments, exploit vector verifications, and technical mitigation reporting.
+• Captain, State Cricket Team: Led the team to 3 championship titles; developed high-pressure composure, leadership, and tactical discipline.
+• Career Objective: Seeking a Software Development Engineer (SDE) Intern role to design and build scalable, reliable software.
 
 === GUIDELINES ===
 - Speak directly, helpfully, and professionally.
 - Highlight concrete technical specifications (AES-256 GCM, PBKDF2 600k rounds, JWT RBAC, ESP32, 13 automated CI tests) rather than generic fluff.
-- If asked about hiring or contacting Akeel, provide his email (peerakeel9027@gmail.com) and phone (+91 6006889027).
+- If asked about hiring or contacting Akeel, provide his email (peerakeel9027@gmail.com), phone (+91 6006889027), and live portfolio (akeel-ahmad.netlify.app).
 `;
 
 function generateContextualReply(query) {
@@ -85,23 +87,23 @@ function generateContextualReply(query) {
   }
 
   if (q.includes('skill') || q.includes('tool') || q.includes('python') || q.includes('nmap') || q.includes('linux') || q.includes('tech') || q.includes('wireshark')) {
-    return `🛡️ **Akeel's Core Technical Skills:**\n\n• **Cybersecurity:** Ethical Hacking, Threat Hunting, MITRE ATT&CK Matrix, Reconnaissance & Port Scanning (Nmap), Wireshark Traffic Analysis, Vulnerability Assessment, OWASP Top 10, Applied Cryptography (AES-256 GCM, PBKDF2), JWT & RBAC.\n• **Languages:** Python (Primary), Node.js, Express, React, SQL/SQLite, HTML5/CSS, C/C++.\n• **Hardware & IoT:** ESP32, Arduino UNO, Sensor Array Interfacing (I2C/SPI/UART), Non-Destructive Physical Testing.\n• **DevOps & Cloud:** Automated CI/CD (13+ Tests), Vercel, Render, Git/GitHub.`;
+    return `🛡️ **Akeel's Core Technical Skills:**\n\n• **Languages:** Python, SQL, C/C++ (fundamentals)\n• **Core CS:** Data Structures & Algorithms, Object-Oriented Design, Operating Systems, DBMS, Computer Networks\n• **Systems & Tools:** Linux, Git, REST APIs, Web Technologies, ESP32, Arduino\n• **Security Tools:** Wireshark, Nmap, Kali Linux, Vulnerability Assessment, Applied Cryptography\n• **Other:** Generative AI/ML basics, Network Security`;
   }
 
-  if (q.includes('cert') || q.includes('deloitte') || q.includes('tata') || q.includes('intel') || q.includes('maryland')) {
-    return `📜 **Verified Industry Certifications:**\n\n1. **Cyber Simulation** — Deloitte\n2. **Cybersecurity Analyst** — TATA\n3. **Cybersecurity for Everyone** — University of Maryland\n4. **AI for Entrepreneurship & AI for All** — Intel\n5. **Introduction to Cybersecurity Essentials**\n6. **Ethical Hacking Principles**\n7. **Python Data Structures & Algorithms**`;
+  if (q.includes('cert') || q.includes('deloitte') || q.includes('tata') || q.includes('intel') || q.includes('maryland') || q.includes('ibm')) {
+    return `📜 **Verified Industry Certifications:**\n\n1. **IBM Full Stack Software Developer Professional Certificate** (In Progress)\n2. **Cyber Simulation** — Deloitte\n3. **Cybersecurity Analyst** — TATA\n4. **Cybersecurity for Everyone** — University of Maryland\n5. **AI for Entrepreneurship & AI for All** — Intel\n6. **Introduction to Cybersecurity Essentials**\n7. **Ethical Hacking Principles**\n8. **Python Data Structures & Algorithms**`;
   }
 
   if (q.includes('education') || q.includes('college') || q.includes('degree') || q.includes('cgpa') || q.includes('anna university')) {
-    return `🎓 **Educational Background:**\n\n• **B.Tech / B.E. in Computer Science & Engineering (2024–2027)**\n  Nehru Institute of Engineering and Technology (Anna University) • **CGPA: 7.56**\n• **Diploma in Computer Engineering (2020–2023)**\n  Government Polytechnic College Gogji Bagh Srinagar (BOTE) • **CGPA: 7.0**\n• **10th Matriculation (2018–2019)**\n  Jamia Islamia Waripora Handwara (JKBOSE) • **63%**`;
+    return `🎓 **Educational Background:**\n\n• **B.Tech / B.E. in Computer Science & Engineering (2024–2027)**\n  Nehru Institute of Engineering and Technology (Anna University) • **CGPA: 7.56**\n• **Diploma in Computer Engineering (2020–2023)**\n  Government Polytechnic College Gogji Bagh Srinagar (BOTE, J&K) • **CGPA: 7.0**`;
   }
 
-  if (q.includes('contact') || q.includes('email') || q.includes('phone') || q.includes('hire') || q.includes('reach') || q.includes('linkedin') || q.includes('call')) {
-    return `📬 **Get in Touch with Akeel Ahmad Peerzada:**\n\n• **Email:** peerakeel9027@gmail.com\n• **Phone:** +91 6006889027\n• **LinkedIn:** https://www.linkedin.com/in/akeel-ahmad-peerzada-59a942333/\n• **GitHub:** https://github.com/AKEEL-AHMAD\n• **Location:** Jammu & Kashmir, India (Open to Relocation & Remote roles)`;
+  if (q.includes('contact') || q.includes('email') || q.includes('phone') || q.includes('hire') || q.includes('reach') || q.includes('linkedin') || q.includes('call') || q.includes('netlify')) {
+    return `📬 **Get in Touch with Akeel Ahmad Peerzada:**\n\n• **Email:** [peerakeel9027@gmail.com](mailto:peerakeel9027@gmail.com)\n• **Phone:** [+91 6006889027](tel:+916006889027)\n• **LinkedIn:** [linkedin.com/in/akeel-ahmad-peerzada](https://www.linkedin.com/in/akeel-ahmad-peerzada)\n• **GitHub:** [github.com/AKEEL-AHMAD](https://github.com/AKEEL-AHMAD)\n• **Portfolio:** [akeel-ahmad.netlify.app](https://akeel-ahmad.netlify.app/)\n• **Seeking:** Software Development Engineer (SDE) Intern role.`;
   }
 
-  if (q.includes('cricket') || q.includes('sports')) {
-    return `🏏 **State-Level Cricket Background:**\nAkeel represented state teams in competitive cricket leagues. The rigor of high-stakes sports developed his tactical composure, strategic thinking, and ability to execute under intense pressure.`;
+  if (q.includes('cricket') || q.includes('sports') || q.includes('captain')) {
+    return `🏏 **Captain, State Cricket Team:**\nAkeel captained the state cricket team and led the squad to **3 tournament championship titles**. The rigor of high-stakes competitive athletics instilled foundational leadership, tactical composure, discipline, and performance consistency under pressure.`;
   }
 
   if (q.includes('internship') || q.includes('codtech') || q.includes('experience')) {
